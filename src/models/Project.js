@@ -12,6 +12,7 @@ export default class Project {
 	addTask(title, description, dueDate, priority) {
 		const newTask = new Task(title, description, dueDate, priority);
 		this.tasks = [...this.tasks, newTask];
+		return newTask;
 	}
 
 	get isDone() {

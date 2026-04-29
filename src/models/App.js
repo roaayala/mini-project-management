@@ -1,4 +1,4 @@
-import Workspace from "../models/Workspace.js";
+import Workspace from "./Workspace.js";
 
 export default class App {
 	constructor() {
@@ -9,5 +9,7 @@ export default class App {
 		const newWorkspace = new Workspace(title, description);
 
 		this.workspaces = [...this.workspaces, newWorkspace];
+
+		return newWorkspace;
 	}
 }

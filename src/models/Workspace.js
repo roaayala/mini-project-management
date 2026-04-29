@@ -1,9 +1,11 @@
 import Project from "./Project.js";
 
 export default class Workspace {
-	constructor(title, description) {
+	constructor(title, description, dueDate, priority) {
 		this.title = title;
 		this.description = description;
+		this.dueDate = dueDate;
+		this.priority = priority;
 
 		this.projects = [];
 	}
@@ -11,6 +13,8 @@ export default class Workspace {
 	addProject(title, description, dueDate, priority) {
 		const newProject = new Project(title, description);
 		this.projects = [...this.projects, newProject];
+
+		return newProject;
 	}
 
 	get isDone() {

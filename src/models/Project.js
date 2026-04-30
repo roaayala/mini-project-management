@@ -17,6 +17,10 @@ export default class Project {
 		return this.tasks.add(newTask);
 	}
 
+	removeTask(id) {
+		this.tasks.remove(id);
+	}
+
 	get isDone() {
 		return this.tasks.isDone;
 	}

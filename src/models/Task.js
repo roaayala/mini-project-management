@@ -17,6 +17,10 @@ export default class Task {
 		return this.todos.add(newTodo);
 	}
 
+	removeTodo(id) {
+		this.todos.remove(id);
+	}
+
 	get isDone() {
 		return this.todos.isDone;
 	}

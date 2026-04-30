@@ -11,6 +11,10 @@ export default class App {
 		return this.workspaces(newWorkspace);
 	}
 
+	removeWorkspace(id) {
+		this.workspaces.remove(id);
+	}
+
 	get isDone() {
 		return this.workspaces.isDone;
 	}

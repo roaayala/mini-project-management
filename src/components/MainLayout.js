@@ -1,15 +1,17 @@
+import createSidebar from "./sidebar.js";
+import createMainPanel from "./MainPanel.js";
+
 export default function createMainLayout() {
 	const container = document.createElement("div");
 	container.classList.add("container");
 
-	const aside = document.createElement("aside");
-	aside.id = "sidebar";
+	const sidebar = createSidebar();
 
-	const main = document.createElement("main");
-	main.id = "main";
+	const mainPanel = createMainPanel();
 
-	container.appendChild(aside);
-	container.appendChild(main);
+	// append to container
+	container.appendChild(sidebar);
+	container.appendChild(mainPanel);
 
 	return container;
 }

@@ -1,7 +1,9 @@
 import Project from "./Project.js";
+import generateId from "../utils/generateId.js";
 
 export default class Workspace {
 	constructor(title, description) {
+		this.id = generateId("workspace");
 		this.title = title;
 		this.description = description;
 

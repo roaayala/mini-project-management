@@ -1,7 +1,9 @@
 import Todo from "./Todo.js";
+import generateId from "../utils/generateId.js";
 
 export default class Task {
 	constructor(title, description, dueDate, priority) {
+		this.id = generateId("task");
 		this.title = title;
 		this.description = description;
 		this.dueDate = dueDate;

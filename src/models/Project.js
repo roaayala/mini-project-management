@@ -1,7 +1,9 @@
 import Task from "./Task.js";
+import generateId from "../utils/generateId.js";
 
 export default class Project {
 	constructor(title, description, dueDate, priority) {
+		this.id = generateId("project");
 		this.title = title;
 		this.description = description;
 		this.dueDate = dueDate;

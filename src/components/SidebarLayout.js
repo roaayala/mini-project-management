@@ -14,6 +14,7 @@ export default function createSidebar(workspacesData) {
 	// nav
 	const sidebarNav = createSidebarNav(workspacesData);
 
+	// button
 	const showAddWorkspaceDialogButton = createButton(
 		"showAddWorkspaceDialog",
 		"btn btn-primary",

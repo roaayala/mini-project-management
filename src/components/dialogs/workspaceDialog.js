@@ -1,19 +1,21 @@
 import createButton from "../commons/Button.js";
 
-export default function createWorkspaceDialog() {
+export default function createWorkspaceDialog(dialogHeaderTitle) {
 	const dialog = document.createElement("dialog");
 
 	const headerTitle = document.createElement("h2");
-	headerTitle.textContent = "New Workspace Details";
+	headerTitle.textContent = dialogHeaderTitle;
+
+	const closeDialog = () => {
+		dialog.close();
+		dialog.remove();
+	};
 
 	const closeButton = createButton(
 		"closeWorkspaceDialog",
 		"btn",
 		"Cancel",
-		() => {
-			dialog.close();
-			dialog.remove();
-		},
+		closeDialog,
 	);
 
 	dialog.appendChild(headerTitle);

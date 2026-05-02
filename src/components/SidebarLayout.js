@@ -19,7 +19,7 @@ export default function createSidebar(workspacesData) {
 		"showAddWorkspaceDialog",
 		"btn btn-primary",
 		"New Workspace",
-		createWorkspaceDialog,
+		createWorkspaceDialog.bind(null, "New Workspace Details"),
 	);
 
 	sidebar.appendChild(sidebarHeader);

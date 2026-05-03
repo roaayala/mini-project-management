@@ -1,5 +1,6 @@
 import createButton from "../commons/Button.js";
 import createTextInput from "../commons/TextInput.js";
+import getInputValue from "../../utils/getInputValue.js";
 
 export default function showWorkspaceDialog(dialogHeaderTitle) {
 	const closeDialog = () => {
@@ -53,10 +54,8 @@ export default function showWorkspaceDialog(dialogHeaderTitle) {
 
 	// form event
 	form.addEventListener("submit", (e) => {
-		function getInput(elementId) {
-			return document.querySelector(`#${elementId}`).value;
-		}
-		console.log(getInput("workspaceName"));
+		const newWorkspace = getInputValue(form, "workspaceName");
+		console.log(newWorkspace);
 
 		closeDialog();
 	});

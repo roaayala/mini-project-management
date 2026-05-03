@@ -54,6 +54,7 @@ export default function showWorkspaceDialog(dialogHeaderTitle) {
 
 	// form event
 	form.addEventListener("submit", (e) => {
+		e.preventDefault();
 		const newWorkspace = getInputValue(form, "workspaceName");
 		console.log(newWorkspace);
 

@@ -6,8 +6,8 @@ export default class App {
 		this.workspaces = new Collection();
 	}
 
-	addWorkspace(title, description) {
-		const newWorkspace = new Workspace(title, description);
+	addWorkspace(name, description) {
+		const newWorkspace = new Workspace(name, description);
 		return this.workspaces(newWorkspace);
 	}
 

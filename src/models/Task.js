@@ -3,17 +3,17 @@ import Collection from "./Collection.js";
 import generateId from "../utils/generateId.js";
 
 export default class Task {
-	constructor(title, description, dueDate, priority) {
+	constructor(name, description, dueDate, priority) {
 		this.id = generateId("task");
-		this.title = title;
+		this.name = name;
 		this.description = description;
 		this.dueDate = dueDate;
 		this.priority = priority;
 		this.todos = new Collection();
 	}
 
-	addTodo(title, description, dueDate, priority) {
-		const newTodo = new Todo(title, description, dueDate, priority);
+	addTodo(name, description, dueDate, priority) {
+		const newTodo = new Todo(name, description, dueDate, priority);
 		return this.todos.add(newTodo);
 	}
 

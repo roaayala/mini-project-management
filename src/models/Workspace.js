@@ -3,16 +3,16 @@ import Collection from "./Collection.js";
 import generateId from "../utils/generateId.js";
 
 export default class Workspace {
-	constructor(title, description) {
+	constructor(name, description) {
 		this.id = generateId("workspace");
-		this.title = title;
+		this.name = name;
 		this.description = description;
 
 		this.projects = new Collection();
 	}
 
-	addProject(title, description, dueDate, priority) {
-		const newProject = new Project(title, description, dueDate, priority);
+	addProject(name, description, dueDate, priority) {
+		const newProject = new Project(name, description, dueDate, priority);
 		return this.projects.add(newProject);
 	}
 

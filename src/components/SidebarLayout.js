@@ -3,6 +3,7 @@ import createSidebarNav from "./sidebars/SidebarNav.js";
 import createButton from "./commons/Button.js";
 
 import showAddWorkspaceDialog from "./dialogs/workspaceDialog.js";
+import showWorkspaceDialog from "./dialogs/workspaceDialog.js";
 
 export default function createSidebar(workspacesData) {
 	const sidebar = document.createElement("aside");
@@ -20,7 +21,11 @@ export default function createSidebar(workspacesData) {
 		"btn btn-primary",
 		"button",
 		"New Workspace",
-		showAddWorkspaceDialog.bind(null, "New Workspace Details"),
+		() => {
+			showWorkspaceDialog("New Workspace Details", (data) => {
+				console.log(data);
+			});
+		},
 	);
 
 	sidebar.appendChild(sidebarHeader);

@@ -33,9 +33,7 @@ export default function createWorkspaceDialogForm({ formId, callback }) {
 			description: getInputValue(form, "workspaceDescription"),
 		};
 
-		console.log(workspace);
-
-		callback();
+		callback(workspace);
 	});
 
 	return form;

@@ -1,4 +1,5 @@
 import createTextInput from "../commons/TextInput.js";
+import createTextarea from "../commons/Textarea.js";
 import getInputValue from "../../utils/getInputValue.js";
 
 export default function createWorkspaceDialogForm({ formId, callback }) {
@@ -11,16 +12,28 @@ export default function createWorkspaceDialogForm({ formId, callback }) {
 		label: "Workspace Name",
 		id: "workspaceName",
 		type: "text",
-		placeholder: "Enter your new workspace name!",
+		placeholder: "Write your new workspace name!",
+		value: "",
+	});
+
+	const textarea = createTextarea({
+		label: "Workspace Description",
+		id: "workspaceDescription",
+		placeholder: "Write your new workspace description!",
 		value: "",
 	});
 
 	form.appendChild(textInput);
+	form.appendChild(textarea);
 
 	form.addEventListener("submit", (e) => {
 		e.preventDefault();
-		const newWorkspace = getInputValue(form, "workspaceName");
-		console.log(newWorkspace);
+		const workspace = {
+			name: getInputValue(form, "workspaceName"),
+			description: getInputValue(form, "workspaceDescription"),
+		};
+
+		console.log(workspace);
 
 		callback();
 	});

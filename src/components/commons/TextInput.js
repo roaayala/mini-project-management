@@ -3,16 +3,15 @@ export default function createTextInput({
 	id = "",
 	type = "",
 	placeholder = "",
-	value = "value",
+	value = "",
 }) {
 	const formGroup = document.createElement("div");
 	formGroup.className = "form-group";
 
 	const textInputLabel = document.createElement("label");
-
 	textInputLabel.textContent = label;
 	textInputLabel.setAttribute("for", id);
-	textInputLabel.className = "text-input-label";
+	textInputLabel.className = "label";
 
 	const textInput = document.createElement("input");
 	textInput.type = type;

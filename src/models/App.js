@@ -1,17 +1,18 @@
 import Workspace from "./Workspace.js";
 import Collection from "./Collection.js";
+import generateId from "../utils/generateId.js";
 
 export default class App {
 	constructor() {
 		this.workspaces = new Collection();
 	}
 
-	addWorkspace(name, description) {
+	saveWorkspace(name, description) {
 		const newWorkspace = new Workspace(name, description);
 		return this.workspaces(newWorkspace);
 	}
 
-	removeWorkspace(id) {
+	deleteWorkspace(id) {
 		this.workspaces.remove(id);
 	}
 

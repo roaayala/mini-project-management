@@ -11,12 +11,12 @@ export default class Workspace {
 		this.projects = new Collection();
 	}
 
-	addProject(name, description, dueDate, priority) {
+	saveProject(name, description, dueDate, priority) {
 		const newProject = new Project(name, description, dueDate, priority);
 		return this.projects.add(newProject);
 	}
 
-	removeProject(id) {
+	deleteProject(id) {
 		this.projects.remove(id);
 	}
 

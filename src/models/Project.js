@@ -12,12 +12,12 @@ export default class Project {
 		this.tasks = new Collection();
 	}
 
-	addTask(name, description, dueDate, priority) {
+	saveTask(name, description, dueDate, priority) {
 		const newTask = new Task(name, description, dueDate, priority);
 		return this.tasks.add(newTask);
 	}
 
-	removeTask(id) {
+	deleteTask(id) {
 		this.tasks.remove(id);
 	}
 

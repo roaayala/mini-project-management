@@ -8,7 +8,8 @@ export default class AppController {
 		this.root = root;
 		this.actions = {
 			saveWorkspace: (data) => {
-				console.log(data);
+				this.appModel.saveWorkspace(data.name, data.description);
+				this.render();
 			},
 		};
 

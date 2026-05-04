@@ -10,7 +10,7 @@ export default function createSidebarNav(workspacesData) {
 		const workspaceItem = document.createElement("div");
 		workspaceItem.id = workspace.id;
 		workspaceItem.className = "sidebar-nav__item";
-		workspaceItem.textContent = workspace.title;
+		workspaceItem.textContent = workspace.name;
 
 		sidebarNav.appendChild(workspaceItem);
 	});

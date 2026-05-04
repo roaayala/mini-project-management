@@ -9,7 +9,7 @@ export default class App {
 
 	saveWorkspace(name, description) {
 		const newWorkspace = new Workspace(name, description);
-		return this.workspaces(newWorkspace);
+		return this.workspaces.add(newWorkspace);
 	}
 
 	deleteWorkspace(id) {

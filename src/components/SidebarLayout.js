@@ -22,9 +22,7 @@ export default function createSidebar(workspacesData, actions) {
 		"button",
 		"New Workspace",
 		() => {
-			showWorkspaceDialog("New Workspace Details", (data) => {
-				actions(data);
-			});
+			showWorkspaceDialog("New Workspace Details", actions);
 		},
 	);
 

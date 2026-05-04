@@ -1,21 +1,20 @@
 import createButton from "../commons/Button.js";
 import workspaceDialogForm from "../forms/WorkspaceDialogForm.js";
 
-export default function showWorkspaceDialog(dialogHeaderTitle, onSaveCallback) {
+export default function showWorkspaceDialog(dialogHeaderTitle, actions) {
 	const closeDialog = () => {
 		dialog.close();
 		dialog.remove();
 	};
 
 	const dialog = document.createElement("dialog");
-
 	const headerTitle = document.createElement("h2");
 	headerTitle.textContent = dialogHeaderTitle;
 
 	const addForm = workspaceDialogForm({
 		formId: "workspaceDialogForm",
-		callback: (data) => {
-			onSaveCallback(data);
+		onSaveWorkspace: (data) => {
+			actions.saveWorkspace(data);
 			closeDialog();
 		},
 	});

@@ -7,9 +7,7 @@ export default function createMainLayout(appModel, actions) {
 	const container = document.createElement("div");
 	container.className = "container";
 
-	const sidebar = createSidebar(workspacesModel, (data) => {
-		actions(data);
-	});
+	const sidebar = createSidebar(workspacesModel, actions);
 
 	const mainPanel = createMainPanel();
 

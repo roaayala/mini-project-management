@@ -7,7 +7,7 @@ export default class AppController {
 		this.appModel = appModel;
 		this.root = root;
 		this.actions = {
-			log: (data) => {
+			saveWorkspace: (data) => {
 				console.log(data);
 			},
 		};
@@ -18,7 +18,7 @@ export default class AppController {
 	render() {
 		this.root.innerHTML = "";
 
-		const mainLayout = createMainLayout(this.appModel, this.actions.log);
+		const mainLayout = createMainLayout(this.appModel, this.actions);
 		this.root.appendChild(mainLayout);
 	}
 }

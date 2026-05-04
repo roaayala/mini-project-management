@@ -2,7 +2,7 @@ import createTextInput from "../commons/TextInput.js";
 import createTextarea from "../commons/Textarea.js";
 import getInputValue from "../../utils/getInputValue.js";
 
-export default function createWorkspaceDialogForm({ formId, callback }) {
+export default function createWorkspaceDialogForm({ formId, onSaveWorkspace }) {
 	const form = document.createElement("form");
 	form.id = formId;
 	form.method = "dialog";
@@ -28,12 +28,12 @@ export default function createWorkspaceDialogForm({ formId, callback }) {
 
 	form.addEventListener("submit", (e) => {
 		e.preventDefault();
-		const workspace = {
+		const data = {
 			name: getInputValue(form, "workspaceName"),
 			description: getInputValue(form, "workspaceDescription"),
 		};
 
-		callback(workspace);
+		onSaveWorkspace(data);
 	});
 
 	return form;

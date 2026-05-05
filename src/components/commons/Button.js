@@ -1,11 +1,15 @@
-export default function createButton(id, style, type, text, callback) {
+export default function createButton({
+	id,
+	style,
+	type = "button",
+	text,
+	callback,
+}) {
 	const button = document.createElement("button");
 
-	if (id) {
-		button.id = id;
-	}
+	if (id) button.id = id;
 
-	button.className = style;
+	if (style) button.className = style;
 
 	button.type = type;
 

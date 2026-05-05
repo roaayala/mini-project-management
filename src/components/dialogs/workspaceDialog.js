@@ -22,15 +22,21 @@ export default function showWorkspaceDialog(dialogHeaderTitle, actions) {
 	const dialogActions = document.createElement("div");
 	dialogActions.className = "dialog-actions";
 
-	const closeButton = createButton(
-		null,
-		"btn",
-		"button",
-		"Cancel",
-		closeDialog,
-	);
+	const closeButton = createButton({
+		id: null,
+		style: "btn",
+		type: "button",
+		text: "Cancel",
+		callback: closeDialog,
+	});
 
-	const saveButton = createButton(null, "btn", "submit", "Save", () => {});
+	const saveButton = createButton({
+		id: null,
+		style: "btn",
+		type: "submit",
+		text: "Save",
+		callback: () => {},
+	});
 	saveButton.setAttribute("form", "workspaceDialogForm");
 
 	// dialog actions

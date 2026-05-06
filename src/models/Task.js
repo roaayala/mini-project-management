@@ -14,11 +14,11 @@ export default class Task {
 
 	saveTask(name, description, dueDate, priority) {
 		const newTodo = new Todo(name, description, dueDate, priority);
-		return this.todos.add(newTodo);
+		return this.todos.save(newTodo);
 	}
 
 	deleteTask(id) {
-		this.todos.remove(id);
+		this.todos.delete(id);
 	}
 
 	get isDone() {

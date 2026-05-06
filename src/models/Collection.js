@@ -3,12 +3,12 @@ export default class Collection {
 		this.items = [];
 	}
 
-	add(item) {
+	save(item) {
 		this.items = [...this.items, item];
 		return item;
 	}
 
-	remove(id) {
+	delete(id) {
 		this.items = this.items.filter((item) => item.id !== id);
 	}
 

@@ -14,11 +14,11 @@ export default class Project {
 
 	saveTask(name, description, dueDate, priority) {
 		const newTask = new Task(name, description, dueDate, priority);
-		return this.tasks.add(newTask);
+		return this.tasks.save(newTask);
 	}
 
 	deleteTask(id) {
-		this.tasks.remove(id);
+		this.tasks.delete(id);
 	}
 
 	get isDone() {

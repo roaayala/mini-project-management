@@ -37,7 +37,7 @@ export default function createSidebarNav(workspaces, actions, activeWorkspace) {
 			const deleteButton = createButton({
 				text: "Delete",
 				callback: () => {
-					console.log("delete click");
+					actions.deleteWorkspace(workspace.id);
 				},
 			});
 

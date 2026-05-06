@@ -1,8 +1,8 @@
 import createSidebar from "./SidebarLayout.js";
 import createMainPanel from "./MainPanel.js";
 
-export default function createMainLayout(appModel, actions) {
-	const workspacesModel = appModel.workspaces.items;
+export default function createMainLayout(models, actions) {
+	const workspacesModel = models.workspaces.items;
 
 	const container = document.createElement("div");
 	container.className = "container";

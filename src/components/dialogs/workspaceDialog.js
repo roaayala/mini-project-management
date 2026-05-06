@@ -1,7 +1,7 @@
 import createButton from "../commons/Button.js";
 import workspaceDialogForm from "../forms/WorkspaceDialogForm.js";
 
-export default function showWorkspaceDialog(dialogHeaderTitle, actions) {
+export default function showWorkspaceDialog(dialogTitle, actions) {
 	const closeDialog = () => {
 		dialog.close();
 		dialog.remove();
@@ -9,7 +9,7 @@ export default function showWorkspaceDialog(dialogHeaderTitle, actions) {
 
 	const dialog = document.createElement("dialog");
 	const headerTitle = document.createElement("h2");
-	headerTitle.textContent = dialogHeaderTitle;
+	headerTitle.textContent = dialogTitle;
 
 	const addForm = workspaceDialogForm({
 		formId: "workspaceDialogForm",

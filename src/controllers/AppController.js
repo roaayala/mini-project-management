@@ -32,6 +32,11 @@ export default class AppController {
 				this.activeWorkspace = id;
 				this.render();
 			},
+			getActiveWorkspace: (id) => {
+				return this.models.workspaces.items.filter(
+					(workspace) => workspace.id === this.activeWorkspace,
+				);
+			},
 		};
 
 		this.render();

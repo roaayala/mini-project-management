@@ -9,7 +9,12 @@ export default function createMainPanel(workspaces, actions, activeWorkspace) {
 		emptyMessage.textContent = "No workspace being selected";
 		mainPanel.appendChild(emptyMessage);
 	} else {
-		console.log(workspace);
+		const workspaceContainer = document.createElement("div");
+		workspaceContainer.className = "workspace";
+
+		const workspaceHeader = document.createElement("header");
+		workspaceHeader.className = "workspace-header";
+
 		const workspaceName = document.createElement("h2");
 		workspaceName.textContent = workspace.name;
 
@@ -18,8 +23,20 @@ export default function createMainPanel(workspaces, actions, activeWorkspace) {
 			? workspace.description
 			: "No description being added";
 
-		mainPanel.appendChild(workspaceName);
-		mainPanel.appendChild(workspaceDescription);
+		workspaceHeader.appendChild(workspaceName);
+		workspaceHeader.appendChild(workspaceDescription);
+
+		const workspaceMain = document.createElement("main");
+		workspaceMain.className = "workspace-main";
+
+		if (workspace.projects.items.length === 0) {
+			const emptyMessage = document.createElement("span");
+			emptyMessage.textContent = "No project being added";
+			workspaceMain.appendChild(emptyMessage);
+		}
+
+		mainPanel.appendChild(workspaceHeader);
+		mainPanel.appendChild(workspaceMain);
 	}
 
 	return mainPanel;

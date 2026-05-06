@@ -8,6 +8,19 @@ export default class Collection {
 		return item;
 	}
 
+	edit(editedItem) {
+		this.items = this.items.map((item) => {
+			if (item.id === editedItem.id) {
+				return {
+					...item,
+					...editedItem,
+				};
+			}
+
+			return item;
+		});
+	}
+
 	delete(id) {
 		this.items = this.items.filter((item) => item.id !== id);
 	}

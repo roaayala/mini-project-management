@@ -12,6 +12,10 @@ export default class App {
 		return this.workspaces.save(newWorkspace);
 	}
 
+	editWorkspace(workspace) {
+		this.workspaces.edit(workspace);
+	}
+
 	deleteWorkspace(id) {
 		this.workspaces.delete(id);
 	}

@@ -11,7 +11,6 @@ export default function showWorkspaceDialog(
 		dialog.remove();
 	};
 
-	console.log(initialData);
 	const isEdit = !!initialData;
 
 	const dialog = document.createElement("dialog");
@@ -23,7 +22,7 @@ export default function showWorkspaceDialog(
 		initialData: initialData,
 		onSaveWorkspace: (data) => {
 			if (isEdit) {
-				console.log(data);
+				actions.editWorkspace({ id: initialData.id, ...data });
 			} else {
 				actions.saveWorkspace(data);
 			}

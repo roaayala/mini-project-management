@@ -18,6 +18,11 @@ export default class AppController {
 
 				this.render();
 			},
+			editWorkspace: (editedWorkspace) => {
+				this.models.editWorkspace(editedWorkspace);
+
+				this.render();
+			},
 			deleteWorkspace: (id) => {
 				this.models.deleteWorkspace(id);
 				this.render();

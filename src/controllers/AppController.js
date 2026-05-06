@@ -2,14 +2,18 @@ import App from "../models/App.js";
 import createMainLayout from "../components/MainLayout.js";
 
 export default class AppController {
-	constructor(appModel, root) {
-		this.appModel = appModel;
+	constructor(models, root) {
+		this.models = models;
 		this.root = root;
 		this.activeWorkspace = null;
 
 		this.actions = {
 			saveWorkspace: (data) => {
-				this.appModel.saveWorkspace(data.name, data.description);
+				this.models.saveWorkspace(data.name, data.description);
+				this.render();
+			},
+			setActiveWorkspace: (id) => {
+				this.activeWorkspace = id;
 				this.render();
 			},
 		};
@@ -20,7 +24,7 @@ export default class AppController {
 	render() {
 		this.root.innerHTML = "";
 
-		const mainLayout = createMainLayout(this.appModel, this.actions);
+		const mainLayout = createMainLayout(this.models, this.actions);
 		this.root.appendChild(mainLayout);
 	}
 }

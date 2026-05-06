@@ -2,12 +2,12 @@ import createSidebar from "./SidebarLayout.js";
 import createMainPanel from "./MainPanel.js";
 
 export default function createMainLayout(models, actions) {
-	const workspacesModel = models.workspaces.items;
+	const workspaces = models.workspaces.items;
 
 	const container = document.createElement("div");
 	container.className = "container";
 
-	const sidebar = createSidebar(workspacesModel, actions);
+	const sidebar = createSidebar(workspaces, actions);
 
 	const mainPanel = createMainPanel();
 

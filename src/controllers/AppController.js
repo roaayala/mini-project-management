@@ -9,7 +9,13 @@ export default class AppController {
 
 		this.actions = {
 			saveWorkspace: (data) => {
-				this.models.saveWorkspace(data.name, data.description);
+				const newWorkspace = this.models.saveWorkspace(
+					data.name,
+					data.description,
+				);
+
+				this.activeWorkspace = newWorkspace.id;
+
 				this.render();
 			},
 			setActiveWorkspace: (id) => {

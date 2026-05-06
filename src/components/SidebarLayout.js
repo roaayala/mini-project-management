@@ -2,8 +2,7 @@ import createSidebarHeader from "./sidebars/SidebarHeader.js";
 import createSidebarNav from "./sidebars/SidebarNav.js";
 import createButton from "./commons/Button.js";
 
-import showAddWorkspaceDialog from "./dialogs/workspaceDialog.js";
-import showWorkspaceDialog from "./dialogs/workspaceDialog.js";
+import workspaceDialog from "./dialogs/workspaceDialog.js";
 
 export default function createSidebar(workspaces, actions, activeWorkspace) {
 	const sidebar = document.createElement("aside");
@@ -17,12 +16,17 @@ export default function createSidebar(workspaces, actions, activeWorkspace) {
 
 	// button
 	const showButton = createButton({
-		id: "showAddWorkspaceDialog",
+		id: "workspaceDialog",
 		style: "btn btn-primary",
 		type: "button",
 		text: "New Workspace",
 		callback: () => {
-			showWorkspaceDialog("New Workspace Details", actions);
+			workspaceDialog(
+				"New Workspace Details",
+				workspaces,
+				actions,
+				activeWorkspace,
+			);
 		},
 	});
 

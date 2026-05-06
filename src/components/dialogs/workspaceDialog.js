@@ -1,7 +1,12 @@
 import createButton from "../commons/Button.js";
 import workspaceDialogForm from "../forms/WorkspaceDialogForm.js";
 
-export default function showWorkspaceDialog(dialogTitle, actions) {
+export default function showWorkspaceDialog(
+	dialogTitle,
+	workspaces,
+	actions,
+	activeWorkspace,
+) {
 	const closeDialog = () => {
 		dialog.close();
 		dialog.remove();

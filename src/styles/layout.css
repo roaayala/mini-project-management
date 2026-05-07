@@ -6,6 +6,12 @@
 	gap: 1rem;
 }
 
+@media screen and (min-width: 576px) {
+	.container {
+		flex-direction: row;
+	}
+}
+
 .sidebar {
 	padding: 1rem;
 	/* flex: 1; */

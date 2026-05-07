@@ -1,5 +1,5 @@
 import createSidebar from "./SidebarLayout.js";
-import createMainPanel from "./MainPanel.js";
+import createMainPanel from "./MainPanelLayout.js";
 
 export default function createMainLayout(models, actions, activeWorkspace) {
 	const workspaces = models.workspaces.items;

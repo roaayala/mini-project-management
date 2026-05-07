@@ -1,3 +1,5 @@
+import createMainPanelHeader from "./main-panels/MainPanelHeader.js";
+
 export default function createMainPanel(workspaces, actions, activeWorkspace) {
 	const mainPanel = document.createElement("main");
 	mainPanel.className = "main-panel";
@@ -13,19 +15,10 @@ export default function createMainPanel(workspaces, actions, activeWorkspace) {
 	const workspaceContainer = document.createElement("div");
 	workspaceContainer.className = "workspace";
 
-	const workspaceHeader = document.createElement("header");
-	workspaceHeader.className = "workspace-header";
-
-	const workspaceName = document.createElement("h2");
-	workspaceName.textContent = workspace.name;
-
-	const workspaceDescription = document.createElement("p");
-	workspaceDescription.textContent = workspace.description
-		? workspace.description
-		: "No description being added";
-
-	workspaceHeader.appendChild(workspaceName);
-	workspaceHeader.appendChild(workspaceDescription);
+	const mainPanelHeader = createMainPanelHeader({
+		name: workspace.name,
+		description: workspace.description,
+	});
 
 	const workspaceMain = document.createElement("main");
 	workspaceMain.className = "workspace-main";
@@ -36,7 +29,7 @@ export default function createMainPanel(workspaces, actions, activeWorkspace) {
 		workspaceMain.appendChild(emptyMessage);
 	}
 
-	mainPanel.appendChild(workspaceHeader);
+	mainPanel.appendChild(mainPanelHeader);
 	mainPanel.appendChild(workspaceMain);
 
 	return mainPanel;

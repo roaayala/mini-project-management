@@ -1,6 +1,6 @@
 import createEmptyMessage from "./commons/EmptyMessage.js";
 import createMainPanelHeader from "./main-panels/MainPanelHeader.js";
-import createMainPanelMain from "./main-panels/MainPanelMain.js";
+import createMainPanelContent from "./main-panels/MainPanelContent.js";
 
 export default function createMainPanel(workspaces, actions, activeWorkspace) {
 	const mainPanel = document.createElement("main");
@@ -17,17 +17,17 @@ export default function createMainPanel(workspaces, actions, activeWorkspace) {
 	const workspaceContainer = document.createElement("div");
 	workspaceContainer.className = "workspace";
 
-	const mainPanelHeader = createMainPanelHeader({
+	const workspaceHeader = createMainPanelHeader({
 		name: workspace.name,
 		description: workspace.description,
 	});
 
-	const mainPanelMain = createMainPanelMain({
+	const workspaceMain = createMainPanelContent({
 		workspace: workspace,
 	});
 
-	mainPanel.appendChild(mainPanelHeader);
-	mainPanel.appendChild(mainPanelMain);
+	mainPanel.appendChild(workspaceHeader);
+	mainPanel.appendChild(workspaceMain);
 
 	return mainPanel;
 }

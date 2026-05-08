@@ -1,17 +1,19 @@
 import createButton from "../commons/Button.js";
+import createItemDialogForm from "../forms/ItemDialogForm.js";
 
 export default function showItemDialog({
 	dialogTitle,
 	formId,
 	initialData = null,
 	actions,
+	onSave,
+	onEdit,
 }) {
 	const closeDialog = () => {
 		dialog.close();
 		dialog.remove();
 	};
 
-	console.log(initialData);
 	const isEdit = !!initialData;
 
 	const dialog = document.createElement("dialog");
@@ -20,18 +22,16 @@ export default function showItemDialog({
 		? `Edit ${dialogTitle}`
 		: `Save ${dialogTitle}`;
 
-	// const form = showWorkspaceDialogForm({
-	// 	formId: "workspaceDialogForm",
-	// 	initialData: initialData,
-	// 	onSaveWorkspace: (data) => {
-	// 		if (isEdit) {
-	// 			actions.editWorkspace({ id: initialData.id, ...data });
-	// 		} else {
-	// 			actions.saveWorkspace(data);
-	// 		}
-	// 		closeDialog();
-	// 	},
-	// });
+	const form = createItemDialogForm({
+		formId: formId,
+		initialData: initialData,
+		onSaveForm: (data) => {
+			if (isEdit) {
+			} else {
+			}
+			closeDialog();
+		},
+	});
 
 	const dialogActions = document.createElement("div");
 	dialogActions.className = "dialog-actions";
@@ -59,10 +59,9 @@ export default function showItemDialog({
 
 	// dialog
 	dialog.appendChild(headerTitle);
-	// dialog.appendChild(form);
+	dialog.appendChild(form);
 	dialog.appendChild(dialogActions);
 
-	// app container
 	document.querySelector(".container").appendChild(dialog);
 
 	dialog.showModal();

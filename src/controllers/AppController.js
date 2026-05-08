@@ -13,14 +13,11 @@ export default class AppController {
 					data.name,
 					data.description,
 				);
-
 				this.activeWorkspace = newWorkspace.id;
-
 				this.render();
 			},
 			editWorkspace: (editedWorkspace) => {
 				this.models.editWorkspace(editedWorkspace);
-
 				this.render();
 			},
 			deleteWorkspace: (id) => {
@@ -28,6 +25,9 @@ export default class AppController {
 				this.activeWorkspace = null;
 				this.render();
 			},
+			saveProject: () => {},
+			editWorkspace: () => {},
+			deleteWorkspace: () => {},
 			setActiveWorkspace: (id) => {
 				this.activeWorkspace = id;
 				this.render();

@@ -19,7 +19,6 @@ export default function createItemDialogForm({
 	const textInput = createTextInput({
 		label: textInputElement.label,
 		id: textInputElement.id,
-		type: textInputElement.type,
 		placeholder: textInputElement.placeholder,
 		value: initialData ? initialData.name : "",
 	});

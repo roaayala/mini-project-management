@@ -37,7 +37,6 @@ export default function showItemDialog({
 		textInputElement: {
 			label: "Project Name",
 			id: "projectName",
-			type: "text",
 			placeholder: "Write your new project name",
 		},
 		textareaElement: {

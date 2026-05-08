@@ -1,7 +1,6 @@
 export default function createTextInput({
 	label = "",
 	id = "",
-	type = "",
 	placeholder = "",
 	value = "",
 }) {
@@ -14,7 +13,7 @@ export default function createTextInput({
 	textInputLabel.className = "label";
 
 	const textInput = document.createElement("input");
-	textInput.type = type;
+	textInput.type = "text";
 	textInput.id = id;
 	textInput.name = id;
 	textInput.placeholder = placeholder;

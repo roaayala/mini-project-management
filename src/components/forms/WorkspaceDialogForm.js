@@ -15,7 +15,6 @@ export default function showWorkspaceDialog({
 	const textInput = createTextInput({
 		label: "Workspace Name",
 		id: "workspaceName",
-		type: "text",
 		placeholder: "Write your new workspace name!",
 		value: initialData ? initialData.name : "",
 	});

@@ -6,6 +6,9 @@ export default class AppController {
 		this.models = models;
 		this.root = root;
 		this.activeWorkspace = null;
+		this.activeProject = null;
+		this.activeTask = null;
+		this.activeTodo = null;
 
 		this.actions = {
 			saveWorkspace: (data) => {
@@ -47,8 +50,27 @@ export default class AppController {
 			deleteProject: () => {},
 			setActiveWorkspace: (id) => {
 				this.activeWorkspace = id;
+				this.activeProject = null;
+				this.activeTask = null;
+				this.activeTodo = null;
 				this.render();
 			},
+			setActiveProject: (id) => {
+				this.activeProject = id;
+				this.activeTask = null;
+				this.activeTodo = null;
+				this.render();
+			},
+			setActiveTask: (id) => {
+				this.activeTask = id;
+				this.activeTodo = null;
+				this.render();
+			},
+			setActiveTodo: (id) => {
+				this.activeTodo = id;
+				this.render();
+			},
+
 			getActiveWorkspace: (id) => {
 				return this.models.workspaces.items.filter(
 					(workspace) => workspace.id === this.activeWorkspace,

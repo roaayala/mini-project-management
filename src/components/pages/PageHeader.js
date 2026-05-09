@@ -5,7 +5,7 @@ export default function createPageHeader({
 	priority,
 }) {
 	const header = document.createElement("header");
-	header.className = "workspace-header";
+	header.className = "page-header";
 
 	const headerName = document.createElement("h2");
 	headerName.textContent = name;

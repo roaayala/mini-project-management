@@ -20,6 +20,9 @@ export default function createWorkspacePage({ workspace, actions }) {
 		description: workspace.description,
 	});
 
+	const workspaceContent = createPageContent({ workspace: workspace });
+
 	pageWrapper.appendChild(workspaceHeader);
+	pageWrapper.appendChild(workspaceContent);
 	return pageWrapper;
 }

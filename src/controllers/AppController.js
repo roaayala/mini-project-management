@@ -26,7 +26,20 @@ export default class AppController {
 				this.render();
 			},
 			saveProject: (data) => {
-				console.log(data);
+				const currentWorkspace = this.models.workspaces.items.find(
+					(workspace) => this.activeWorkspace === workspace.id,
+				);
+
+				if (currentWorkspace) {
+					currentWorkspace.saveProject(
+						data.name,
+						data.description,
+						data.dueDate,
+						data.priority,
+					);
+				}
+
+				this.render();
 			},
 			editProject: (data) => {
 				console.log(data);

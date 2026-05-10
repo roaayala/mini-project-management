@@ -23,13 +23,22 @@ export default function createMainLayout(
 		(workspace) => workspace.id === activeWorkspace,
 	);
 
-	const workspacePage = createWorkspacePage({
-		workspace: currentWorkspace,
-		actions: actions,
-		activeProject: activeProject,
-	});
+	if (activeProject) {
+		console.log("project");
 
-	container.appendChild(workspacePage);
+		if (activeTask) {
+			if (activeTodo) {
+			}
+		}
+	} else {
+		const workspacePage = createWorkspacePage({
+			workspace: currentWorkspace,
+			actions: actions,
+			activeProject: activeProject,
+		});
+
+		container.appendChild(workspacePage);
+	}
 
 	return container;
 }

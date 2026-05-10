@@ -28,7 +28,7 @@ export default function createPageContent({ workspace, actions }) {
 			callback: (e) => {
 				e.stopPropagation();
 				showItemDialog({
-					title: "Edit Project",
+					title: "Project",
 					formId: "projectDialogForm",
 					initialData: project,
 					onSave: actions.saveProject,

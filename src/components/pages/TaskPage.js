@@ -11,6 +11,8 @@ export default function createProjectPage({ task, actions }) {
 	const taskHeader = createPageHeader({
 		name: task.name,
 		description: task.description,
+		dueDate: task.dueDate,
+		priority: task.priority,
 	});
 	pageWrapper.appendChild(taskHeader);
 

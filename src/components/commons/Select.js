@@ -18,6 +18,10 @@ export default function createSelect({ label, id, value = "" }) {
 		option.value = priority;
 		option.textContent = priority;
 
+		if (priority === value) {
+			option.selected = true;
+		}
+
 		select.appendChild(option);
 	});
 

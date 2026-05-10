@@ -13,6 +13,7 @@ export default function createItemDialogForm({
 	dateInputElement = { label, id },
 	selectInputElement = { label, id },
 }) {
+	console.log(initialData);
 	const form = document.createElement("form");
 	form.id = formId;
 	form.method = "dialog";
@@ -35,13 +36,13 @@ export default function createItemDialogForm({
 	const dateInput = createDateInput({
 		label: dateInputElement.label,
 		id: dateInputElement.id,
-		value: initialData ? initialData.name : "",
+		value: initialData ? initialData.dueDate : "",
 	});
 
 	const selectInput = createSelect({
 		label: selectInputElement.label,
 		id: selectInputElement.id,
-		value: initialData ? initialData.name : "",
+		value: initialData ? initialData.priority : "",
 	});
 
 	form.appendChild(textInput);

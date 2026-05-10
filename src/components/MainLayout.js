@@ -1,6 +1,7 @@
 import createSidebar from "./SidebarLayout.js";
 import createWorkspacePage from "./pages/WorkspacePage.js";
 import createProjectPage from "./pages/ProjectPage.js";
+import createTaskPage from "./pages/TaskPage.js";
 
 export default function createMainLayout(
 	models,
@@ -24,7 +25,20 @@ export default function createMainLayout(
 		(workspace) => workspace.id === activeWorkspace,
 	);
 
-	if (activeProject) {
+	if (activeTodo) {
+	} else if (activeTask) {
+		const currentProject = currentWorkspace.projects.items.find(
+			(project) => project.id === activeProject,
+		);
+
+		const currentTask = currentProject.tasks.items.find(
+			(task) => task.id === activeTask,
+		);
+
+		const taskPage = createTaskPage({ task: currentTask, actions: actions });
+
+		container.appendChild(taskPage);
+	} else if (activeProject) {
 		const currentProject = currentWorkspace.projects.items.find(
 			(project) => project.id === activeProject,
 		);
@@ -35,11 +49,6 @@ export default function createMainLayout(
 		});
 
 		container.appendChild(projectPage);
-
-		if (activeTask) {
-			if (activeTodo) {
-			}
-		}
 	} else {
 		const workspacePage = createWorkspacePage({
 			workspace: currentWorkspace,

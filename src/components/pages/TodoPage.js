@@ -4,7 +4,7 @@ import createPageAction from "./PageAction.js";
 
 import createEmptyMessage from "../commons/EmptyMessage.js";
 
-export default function createProjectPage({ task, actions }) {
+export default function createTodoPage({ task, actions }) {
 	const pageWrapper = document.createElement("div");
 	pageWrapper.className = "page-wrapper";
 

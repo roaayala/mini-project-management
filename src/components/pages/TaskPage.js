@@ -4,7 +4,7 @@ import createPageAction from "./PageAction.js";
 
 import createEmptyMessage from "../commons/EmptyMessage.js";
 
-export default function createProjectPage({ task, actions }) {
+export default function createTaskPage({ task, actions }) {
 	const pageWrapper = document.createElement("div");
 	pageWrapper.className = "page-wrapper";
 
@@ -16,13 +16,13 @@ export default function createProjectPage({ task, actions }) {
 	});
 	pageWrapper.appendChild(taskHeader);
 
-	const todos = task.todo.items;
+	const todos = task.todos.items;
 
 	const taskContent = createPageContent({
 		items: todos,
 		actions: actions,
 		emptyMessageText: "No todo being added!",
-		setActiveItem: actions.setActiveTask,
+		setActiveItem: actions.setActiveTodo,
 		dialogConfig: {
 			title: "Task",
 			formId: "taskDialogForm",
@@ -33,7 +33,7 @@ export default function createProjectPage({ task, actions }) {
 	});
 
 	const taskAction = createPageAction({
-		buttonElement: { text: "New Task" },
+		buttonElement: { text: "New Todo" },
 		itemDialogElement: {
 			title: "Task Details",
 			formId: "taskDialogForm",

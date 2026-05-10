@@ -26,8 +26,14 @@ export default function createWorkspacePage({ workspace, actions }) {
 	});
 
 	const workspaceAction = createPageAction({
-		workspace: workspace,
-		actions: actions,
+		buttonElement: { text: "New Project" },
+		itemDialogElement: {
+			title: "Project Details",
+			formId: "projectDialogForm",
+			initialData: null,
+			onSave: actions.saveProject,
+			onEdit: actions.editProject,
+		},
 	});
 
 	pageWrapper.appendChild(workspaceHeader);

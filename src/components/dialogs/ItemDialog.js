@@ -25,10 +25,8 @@ export default function showItemDialog({
 		onSaveForm: (data) => {
 			if (isEdit) {
 				onEdit({ id: initialData.id, ...data });
-				console.log(data.dueDate);
 			} else {
 				onSave(data);
-				console.log(data.dueDate);
 			}
 			closeDialog();
 		},

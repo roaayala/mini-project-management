@@ -4,6 +4,8 @@ import createDateInput from "../commons/DateInput.js";
 import createSelect from "../commons/Select.js";
 import getInputValue from "../../utils/getInputValue.js";
 
+import { isoDateToString } from "../../utils/date.js";
+
 export default function createItemDialogForm({
 	formId,
 	initialData,
@@ -35,7 +37,7 @@ export default function createItemDialogForm({
 	const dateInput = createDateInput({
 		label: dateInputElement.label,
 		id: dateInputElement.id,
-		value: initialData ? initialData.dueDate : "",
+		value: initialData ? isoDateToString(initialData.dueDate) : "",
 	});
 
 	const selectInput = createSelect({

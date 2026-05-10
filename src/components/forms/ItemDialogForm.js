@@ -13,7 +13,6 @@ export default function createItemDialogForm({
 	dateInputElement = { label, id },
 	selectInputElement = { label, id },
 }) {
-	console.log(initialData);
 	const form = document.createElement("form");
 	form.id = formId;
 	form.method = "dialog";
@@ -52,10 +51,11 @@ export default function createItemDialogForm({
 
 	form.addEventListener("submit", (e) => {
 		e.preventDefault();
+
 		const data = {
 			name: getInputValue(form, textInputElement.id),
 			description: getInputValue(form, textareaElement.id),
-			dueDate: getInputValue(form, dateInputElement.id),
+			dueDate: new Date(getInputValue(form, dateInputElement.id)).toISOString(),
 			priority: getInputValue(form, selectInputElement.id),
 		};
 

@@ -21,7 +21,6 @@ export default function createWorkspacePage({ workspace, actions }) {
 	});
 
 	const projects = workspace.projects.items;
-	console.log(projects);
 
 	const workspaceContent = createPageContent({
 		items: projects,

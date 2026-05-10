@@ -1,5 +1,6 @@
 import App from "../models/App.js";
 import createMainLayout from "../components/MainLayout.js";
+import { da } from "date-fns/locale";
 
 export default class AppController {
 	constructor(models, root) {
@@ -72,6 +73,15 @@ export default class AppController {
 				}
 
 				this.render();
+			},
+			saveTask: (data) => {
+				console.log(data);
+			},
+			editTask: (data) => {
+				console.log(data);
+			},
+			deleteTask: (id) => {
+				console.log(id);
 			},
 			setActiveWorkspace: (id) => {
 				this.activeWorkspace = id;

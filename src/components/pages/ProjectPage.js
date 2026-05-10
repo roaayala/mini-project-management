@@ -15,7 +15,6 @@ export default function createProjectPage({ project, actions }) {
 	pageWrapper.appendChild(projectHeader);
 
 	const tasks = project.tasks.items;
-	console.log(tasks);
 
 	const projectContent = createPageContent({
 		items: tasks,
@@ -31,8 +30,20 @@ export default function createProjectPage({ project, actions }) {
 		onDelete: actions.deleteTask,
 	});
 
+	const projectAction = createPageAction({
+		buttonElement: { text: "New Task" },
+		itemDialogElement: {
+			title: "Task Details",
+			formId: "taskDialogForm",
+			initialData: null,
+			onSave: actions.saveTask,
+			onEdit: actions.EditTask,
+		},
+	});
+
 	pageWrapper.appendChild(projectHeader);
 	pageWrapper.appendChild(projectContent);
+	pageWrapper.appendChild(projectAction);
 
 	return pageWrapper;
 }

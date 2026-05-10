@@ -100,6 +100,38 @@ export default class AppController {
 
 				this.render();
 			},
+			saveTodo: (data) => {
+				const currentTodo = this.getCurrentTodo();
+				if (currentTodo) {
+					currentTodo.saveTodo(
+						data.name,
+						data.description,
+						data.dueDate,
+						data.priority,
+						data.isDone,
+					);
+				}
+
+				this.render();
+			},
+			editTodo: (data) => {
+				const currentTask = this.getCurrentTask();
+				if (currentTask) {
+					currentTask.editTodo(data);
+				}
+				this.render();
+			},
+			saveTodo: (id) => {
+				const currentTask = this.getCurrentTask();
+				if (currentTask) {
+					currentTask.deleteTodo(id);
+				}
+
+				if (this.activeTodo === id) {
+					this.activeTodo = null;
+				}
+				this.render();
+			},
 			setActiveWorkspace: (id) => {
 				this.activeWorkspace = id;
 				this.activeProject = null;
@@ -123,12 +155,6 @@ export default class AppController {
 				this.activeTodo = id;
 				this.render();
 			},
-
-			getCurrentWorkspace: (id) => {
-				return this.models.workspaces.items.filter(
-					(workspace) => workspace.id === this.activeWorkspace,
-				);
-			},
 		};
 
 		this.render();
@@ -145,6 +171,14 @@ export default class AppController {
 
 		return currentWorkspace?.projects.items.find(
 			(project) => project.id === this.activeProject,
+		);
+	}
+
+	getCurrentTask() {
+		const currentProject = this.getCurrentProject();
+
+		return currentProject?.tasks.items.find(
+			(task) => task.id === this.activeTask,
 		);
 	}
 

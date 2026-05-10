@@ -8,13 +8,31 @@ export default function createProjectPage({ project, actions }) {
 	const pageWrapper = document.createElement("div");
 	pageWrapper.className = "page-wrapper";
 
-	const tasks = project.items;
+	const projectHeader = createPageHeader({
+		name: project.name,
+		description: project.description,
+	});
+	pageWrapper.appendChild(projectHeader);
 
-	if (!tasks) {
-		const emptyMessage = createEmptyMessage("No task being added!");
-		pageWrapper.appendChild(emptyMessage);
-		return pageWrapper;
-	}
+	const tasks = project.tasks.items;
+	console.log(tasks);
+
+	const projectContent = createPageContent({
+		items: tasks,
+		actions: actions,
+		emptyMessageText: "No task being added!",
+		setActiveItem: actions.setActiveTask,
+		dialogConfig: {
+			title: "Task",
+			formId: "taskDialogForm",
+			onSaveItem: actions.saveTask,
+			onEditItem: actions.EditTask,
+		},
+		onDelete: actions.deleteTask,
+	});
+
+	pageWrapper.appendChild(projectHeader);
+	pageWrapper.appendChild(projectContent);
 
 	return pageWrapper;
 }

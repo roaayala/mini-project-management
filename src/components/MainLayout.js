@@ -25,16 +25,16 @@ export default function createMainLayout(
 	);
 
 	if (activeProject) {
-		// const currentProject = currentWorkspace.projects.items.find(
-		// 	(project) => project.id === activeProject,
-		// );
+		const currentProject = currentWorkspace.projects.items.find(
+			(project) => project.id === activeProject,
+		);
 
-		// const projectPage = createProjectPage({
-		// 	project: currentProject,
-		// 	actions: actions,
-		// });
+		const projectPage = createProjectPage({
+			project: currentProject,
+			actions: actions,
+		});
 
-		// container.appendChild(projectPage);
+		container.appendChild(projectPage);
 
 		if (activeTask) {
 			if (activeTodo) {
@@ -44,7 +44,6 @@ export default function createMainLayout(
 		const workspacePage = createWorkspacePage({
 			workspace: currentWorkspace,
 			actions: actions,
-			activeProject: activeProject,
 		});
 
 		container.appendChild(workspacePage);

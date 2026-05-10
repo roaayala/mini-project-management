@@ -21,6 +21,7 @@ export default function createWorkspacePage({ workspace, actions }) {
 	});
 
 	const projects = workspace.projects.items;
+	console.log(projects);
 
 	const workspaceContent = createPageContent({
 		items: projects,
@@ -29,7 +30,7 @@ export default function createWorkspacePage({ workspace, actions }) {
 		setActiveItem: actions.setActiveProject,
 		dialogConfig: {
 			title: "Project",
-			formId: "projectFormDialog",
+			formId: "projectDialogForm",
 			onSaveItem: actions.saveProject,
 			onEditItem: actions.editProject,
 		},

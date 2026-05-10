@@ -4,7 +4,11 @@ import createPageAction from "./PageAction.js";
 
 import createEmptyMessage from "../commons/EmptyMessage.js";
 
-export default function createWorkspacePage({ workspace, actions }) {
+export default function createWorkspacePage({
+	workspace,
+	actions,
+	activeProject,
+}) {
 	const pageWrapper = document.createElement("div");
 	pageWrapper.className = "page-wrapper";
 
@@ -23,6 +27,7 @@ export default function createWorkspacePage({ workspace, actions }) {
 	const workspaceContent = createPageContent({
 		workspace: workspace,
 		actions: actions,
+		activeProject: activeProject,
 	});
 
 	const workspaceAction = createPageAction({

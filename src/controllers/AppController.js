@@ -81,6 +81,7 @@ export default class AppController {
 				this.activeProject = id;
 				this.activeTask = null;
 				this.activeTodo = null;
+
 				this.render();
 			},
 			setActiveTask: (id) => {

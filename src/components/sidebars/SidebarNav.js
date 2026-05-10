@@ -17,7 +17,7 @@ export default function createSidebarNav(workspaces, actions, activeWorkspace) {
 		itemContainer.id = workspace.id;
 		itemContainer.className = "sidebar-nav__item";
 
-		itemContainer.addEventListener("click", (e) => {
+		itemContainer.addEventListener("click", () => {
 			actions.setActiveWorkspace(workspace.id);
 		});
 

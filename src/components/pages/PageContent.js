@@ -2,7 +2,11 @@ import createButton from "../commons/Button.js";
 import createEmptyMessage from "../commons/EmptyMessage.js";
 import showItemDialog from "../dialogs/ItemDialog.js";
 
-export default function createPageContent({ workspace, actions }) {
+export default function createPageContent({
+	workspace,
+	actions,
+	activeProject,
+}) {
 	const pageContent = document.createElement("main");
 	pageContent.className = "page-content";
 
@@ -22,6 +26,10 @@ export default function createPageContent({ workspace, actions }) {
 
 		const itemName = document.createElement("span");
 		itemName.textContent = project.name;
+
+		itemName.addEventListener("click", () => {
+			actions.setActiveProject(project.id);
+		});
 
 		const editButton = createButton({
 			text: "Edit",

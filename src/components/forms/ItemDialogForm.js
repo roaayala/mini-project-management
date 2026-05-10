@@ -37,7 +37,7 @@ export default function createItemDialogForm({
 	const dateInput = createDateInput({
 		label: dateInputElement.label,
 		id: dateInputElement.id,
-		value: initialData ? isoDateToString(initialData.dueDate) : "",
+		value: initialData?.dueDate ? isoDateToString(initialData.dueDate) : "",
 	});
 
 	const selectInput = createSelect({
@@ -57,7 +57,7 @@ export default function createItemDialogForm({
 		const data = {
 			name: getInputValue(form, textInputElement.id),
 			description: getInputValue(form, textareaElement.id),
-			dueDate: new Date(getInputValue(form, dateInputElement.id)).toISOString(),
+			dueDate: getInputValue(form, dateInputElement.id),
 			priority: getInputValue(form, selectInputElement.id),
 		};
 

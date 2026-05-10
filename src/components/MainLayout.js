@@ -26,6 +26,7 @@ export default function createMainLayout(
 	const workspacePage = createWorkspacePage({
 		workspace: currentWorkspace,
 		actions: actions,
+		activeProject: activeProject,
 	});
 
 	container.appendChild(workspacePage);

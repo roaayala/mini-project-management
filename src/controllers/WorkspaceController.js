@@ -11,7 +11,11 @@ export default class WorkspaceController {
     const newName = name;
     const newDescription = description;
 
-    const newWorkspace = new Workspace(newId, newName, newDescription);
+    const newWorkspace = new Workspace({
+      id: newId,
+      name: newName,
+      description: newDescription,
+    });
 
     this.workspaces = [...this.workspaces, newWorkspace];
     return newWorkspace;

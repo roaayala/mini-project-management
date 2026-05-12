@@ -17,6 +17,15 @@ export default class AppController {
     this.activeTodo = null;
 
     this.actions = {
+      // SET ACTIVE STATE
+      setActiveWorkspace: (id) => {
+        this.activeWorkspace = id;
+        this.activeProject = null;
+        this.activeTask = null;
+        this.activeTodo = null;
+      },
+
+      // WORKSPACE HANDLER
       handleAddWorkspace: (data) => {
         console.log(data);
       },

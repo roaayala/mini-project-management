@@ -9,13 +9,14 @@ export default class AppController {
     };
 
     this.activeWorkspace = null;
+
     this.render();
   }
 
   render() {
     this.root.innerHTML = "";
 
-    const mainLayout = createMainLayout(this.models);
+    const mainLayout = createMainLayout(this.models.workspaces);
     this.root.appendChild(mainLayout);
   }
 }

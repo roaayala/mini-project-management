@@ -1,6 +1,6 @@
 import createEmptyMessage from "../commons/EmptyMessage.js";
 
-export default function createSidebarNav({ workspaces }) {
+export default function createSidebarNav({ workspaces, activeWorkspace }) {
   const sidebarNav = document.createElement("nav");
   sidebarNav.className = "sidebar__nav";
 

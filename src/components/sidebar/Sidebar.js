@@ -1,6 +1,8 @@
 import createSidebarHeader from "./SidebarHeader.js";
 import createSidebarNav from "./SidebarNav.js";
+import sidebarAction from "./SidebarAction.js";
 import createButton from "../commons/Button.js";
+import createSidebarAction from "./SidebarAction.js";
 
 export default function createSidebar({
   workspaces,
@@ -15,16 +17,11 @@ export default function createSidebar({
   sidebar.appendChild(sidebarHeader);
 
   // content
-  const sidebarNav = createSidebarNav({ workspaces });
+  const sidebarNav = createSidebarNav({ workspaces, activeWorkspace });
   sidebar.appendChild(sidebarNav);
 
   // actions
-  const sidebarAction = document.createElement("div");
-  sidebarAction.className = "sidebar__action";
-
-  const addButton = createButton({ text: "New Workspace" });
-  sidebarAction.appendChild(addButton);
-
+  const sidebarAction = createSidebarAction({ actions });
   sidebar.appendChild(sidebarAction);
 
   return sidebar;

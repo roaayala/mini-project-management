@@ -1,4 +1,5 @@
 import createSidebarHeader from "./SidebarHeader.js";
+import createSidebarNav from "./SidebarNav.js";
 import createButton from "../commons/Button.js";
 
 export default function createSidebar({
@@ -14,12 +15,7 @@ export default function createSidebar({
   sidebar.appendChild(sidebarHeader);
 
   // content
-  const sidebarNav = document.createElement("nav");
-  sidebarNav.className = "sidebar__nav";
-
-  if (workspaces.length === 0) {
-    sidebarNav.textContent = "Workspace empty!";
-  }
+  const sidebarNav = createSidebarNav({ workspaces });
   sidebar.appendChild(sidebarNav);
 
   // actions

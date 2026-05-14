@@ -6,6 +6,11 @@ export default function showDialog({
     title,
   },
 }) {
+  const closeDialog = () => {
+    dialog.close();
+    dialog.remove();
+  };
+
   const dialog = document.createElement("dialog");
   dialog.className = "dialog";
 
@@ -29,7 +34,7 @@ export default function showDialog({
   const action = document.createElement("footer");
   action.className = "dialog__action";
   // cancel button
-  const cancelButton = createButton({ text: "Cancel" });
+  const cancelButton = createButton({ text: "Cancel", callback: closeDialog });
   // save button
   const saveButton = createButton({
     text: "Save",

@@ -1,5 +1,5 @@
 import createSidebar from "./sidebar/Sidebar.js";
-import createMainPanel from "./main-panel/MainPanel";
+import createWorkspacePage from "./pages/WorkspacePage.js";
 
 export default function createMainLayout(workspaces, actions, activeWorkspace) {
   const container = document.createElement("div");
@@ -12,8 +12,12 @@ export default function createMainLayout(workspaces, actions, activeWorkspace) {
     (workspace) => workspace.id === activeWorkspace,
   );
 
-  const mainPanel = createMainPanel({ workspace, actions, activeWorkspace });
-  container.appendChild(mainPanel);
+  const workspacePage = createWorkspacePage({
+    workspace,
+    actions,
+    activeWorkspace,
+  });
+  container.appendChild(workspacePage);
 
   return container;
 }

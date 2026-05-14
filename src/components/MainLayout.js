@@ -8,7 +8,7 @@ export default function createMainLayout(workspaces, actions, activeWorkspace) {
   const sidebar = createSidebar({ workspaces, actions, activeWorkspace });
   container.appendChild(sidebar);
 
-  const mainPanel = createMainPanel();
+  const mainPanel = createMainPanel({ workspaces, activeWorkspace });
   container.appendChild(mainPanel);
 
   return container;

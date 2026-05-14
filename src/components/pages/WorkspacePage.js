@@ -1,5 +1,6 @@
 import createEmptyMessage from "../commons/EmptyMessage";
 import createPageHeader from "./PageHeader";
+import createPageContent from "./PageContent";
 
 export default function createWorkspacePage({
   workspace,
@@ -17,6 +18,13 @@ export default function createWorkspacePage({
 
   const workspaceHeader = createPageHeader({ workspace });
   workspacePage.appendChild(workspaceHeader);
+
+  const workspaceContent = createPageContent({
+    projects: workspace.projects,
+    actions,
+    emptyMessageText: "Project is empty!",
+  });
+  workspacePage.appendChild(workspaceContent);
 
   return workspacePage;
 }

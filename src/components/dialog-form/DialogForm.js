@@ -38,7 +38,6 @@ export default function createDialogForm({
       name: getInputValue(form, "name"),
       description: getInputValue(form, "description"),
     };
-    console.log(data);
 
     onSubmit(data);
   });

@@ -1,13 +1,14 @@
-import getInputValue from "../../utils/getInputValue.js";
 import createButton from "../commons/Button.js";
-import createTextarea from "../commons/Textarea.js";
-import createTextInput from "../commons/TextInput.js";
+
+import createDialogForm from "./DialogForm.js";
 
 export default function showDialog({
   actions,
   dialogConfig = {
-    id,
     title,
+  },
+  formConfig = {
+    id,
   },
 }) {
   const closeDialog = () => {
@@ -30,36 +31,14 @@ export default function showDialog({
   dialog.appendChild(header);
 
   // body
-  const form = document.createElement("form");
-  form.id = "form";
-  form.className = "form";
-
-  const textInput = createTextInput({
-    label: "Name",
-    id: "name",
-    placeholder: "Workspace Name",
-  });
-  form.appendChild(textInput);
-
-  const textarea = createTextarea({
-    label: "Description",
-    id: "description",
-    placeholder: "Workspace Description",
-  });
-
-  form.appendChild(textarea);
-
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-
-    const data = {
-      name: getInputValue(form, "name"),
-      desription: getInputValue(form, "description"),
-    };
-
-    actions.handleAddWorkspace(data);
-
-    closeDialog();
+  const form = createDialogForm({
+    actions,
+    formConfig: {
+      id: formConfig.id,
+    },
+    onSubmit: () => {
+      closeDialog();
+    },
   });
 
   dialog.appendChild(form);
@@ -68,13 +47,16 @@ export default function showDialog({
   const action = document.createElement("footer");
   action.className = "dialog__action";
   // cancel button
-  const cancelButton = createButton({ text: "Cancel", callback: closeDialog });
+  const cancelButton = createButton({
+    text: "Cancel",
+    callback: closeDialog,
+  });
   // save button
   const saveButton = createButton({
     text: "Save",
     type: "submit",
   });
-  saveButton.setAttribute("form", "form");
+  saveButton.setAttribute("form", formConfig.id);
 
   action.appendChild(cancelButton);
   action.appendChild(saveButton);

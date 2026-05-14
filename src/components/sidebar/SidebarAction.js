@@ -14,6 +14,7 @@ export default function createSidebarAction({ actions }) {
         dialogConfig: {
           title: "New Workspace Details",
         },
+        formConfig: { id: "form" },
       });
     },
   });

@@ -1,6 +1,7 @@
 import createEmptyMessage from "../commons/EmptyMessage";
 import createPageHeader from "./PageHeader";
 import createPageContent from "./PageContent";
+import createPageActions from "./PageActions";
 
 export default function createWorkspacePage({
   workspace,
@@ -25,6 +26,14 @@ export default function createWorkspacePage({
     emptyMessageText: "Project is empty!",
   });
   workspacePage.appendChild(workspaceContent);
+
+  const workspaceActions = createPageActions({
+    buttonConfig: { text: "Add Project" },
+    dialogConfig: { title: "Project" },
+    formConfig: { id: "form", elementPlaceholder: "Project" },
+    onAdd: actions.handleAddProject,
+  });
+  workspacePage.appendChild(workspaceActions);
 
   return workspacePage;
 }

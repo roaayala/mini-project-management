@@ -58,6 +58,10 @@ export default class AppController {
 
         this.render();
       },
+
+      handleAddProject: (data) => {
+        console.log(data);
+      },
     };
 
     this.render();

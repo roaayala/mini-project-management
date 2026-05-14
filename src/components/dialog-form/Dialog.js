@@ -3,13 +3,15 @@ import createButton from "../commons/Button.js";
 import createDialogForm from "./DialogForm.js";
 
 export default function showDialog({
-  actions,
+  initialData = null,
   dialogConfig = {
     title,
   },
   formConfig = {
     id,
   },
+  onAdd,
+  onEdit,
 }) {
   const closeDialog = () => {
     dialog.close();
@@ -25,18 +27,26 @@ export default function showDialog({
 
   const headerTitle = document.createElement("h2");
   headerTitle.className = "dialog__header-title";
-  headerTitle.textContent = dialogConfig.title;
+  headerTitle.textContent = initialData
+    ? `Edit ${dialogConfig.title} Details`
+    : `Save ${dialogConfig.title} Details`;
 
   header.appendChild(headerTitle);
   dialog.appendChild(header);
 
   // body
   const form = createDialogForm({
-    actions,
+    initialData,
     formConfig: {
       id: formConfig.id,
     },
-    onSubmit: () => {
+    onSubmit: (data) => {
+      if (initialData) {
+        onEdit(data);
+      } else {
+        onAdd(data);
+      }
+
       closeDialog();
     },
   });

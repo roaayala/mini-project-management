@@ -3,7 +3,7 @@ import createTextInput from "../commons/TextInput.js";
 import createTextarea from "../commons/Textarea.js";
 
 export default function createDialogForm({
-  actions,
+  initialData,
   formConfig = { id },
   onSubmit,
 }) {
@@ -15,6 +15,7 @@ export default function createDialogForm({
     label: "Name",
     id: "name",
     placeholder: "Workspace Name",
+    value: initialData ? initialData.name : "",
   });
   form.appendChild(textInput);
 
@@ -22,6 +23,7 @@ export default function createDialogForm({
     label: "Description",
     id: "description",
     placeholder: "Workspace Description",
+    value: initialData ? initialData.desription : "",
   });
 
   form.appendChild(textarea);
@@ -34,9 +36,7 @@ export default function createDialogForm({
       desription: getInputValue(form, "description"),
     };
 
-    actions.handleAddWorkspace(data);
-
-    onSubmit();
+    onSubmit(data);
   });
 
   return form;

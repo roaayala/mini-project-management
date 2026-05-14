@@ -12,9 +12,12 @@ export default function createSidebarAction({ actions }) {
       showDialog({
         actions,
         dialogConfig: {
-          title: "New Workspace Details",
+          title: "Workspace",
+          initialData: null,
         },
         formConfig: { id: "form" },
+        onAdd: actions.handleAddWorkspace,
+        onEdit: actions.handleRemoveWorkspace,
       });
     },
   });

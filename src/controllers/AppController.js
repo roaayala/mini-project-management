@@ -52,8 +52,11 @@ export default class AppController {
 
         this.render();
       },
-      handleEditWorkspace: (editedWorkspace) => {
-        console.log(editedWorkspace);
+      handleEditWorkspace: (editedWs) => {
+        this.workspaceController.editWorkspace(this.activeWorkspace, editedWs);
+        this.models.workspaces = this.workspaceController.workspaces;
+
+        this.render();
       },
     };
 

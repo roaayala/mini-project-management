@@ -27,5 +27,15 @@ export default class WorkspaceController {
     );
   }
 
-  editWorkspace(editedWorkspace) {}
+  editWorkspace(wsId, editedWs) {
+    this.workspaces = this.workspaces.map((workspace) => {
+      if (workspace.id === wsId) {
+        return {
+          ...workspace,
+          ...editedWs,
+        };
+      }
+      return workspace;
+    });
+  }
 }

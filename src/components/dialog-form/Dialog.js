@@ -2,33 +2,11 @@ import createButton from "../commons/Button.js";
 import createDialogForm from "./DialogForm.js";
 
 export default function showDialog({
-  initialData = null,
+  initialData,
   dialogConfig = {
     title,
   },
-  formConfig = {
-    id,
-    textInputConfig: {
-      label,
-      id,
-      placeholder,
-    },
-    textareaConfig: {
-      label,
-      id,
-      placeholder,
-    },
-    dateInputConfig: {
-      isActive,
-      label,
-      id,
-    },
-    selectConfig: {
-      isActive,
-      label,
-      id,
-    },
-  },
+  formConfig = {},
   onAdd,
   onEdit,
 }) {
@@ -54,29 +32,7 @@ export default function showDialog({
   // body
   const form = createDialogForm({
     initialData,
-    formConfig: {
-      id: formConfig.id,
-      textInputConfig: {
-        label: formConfig.textInputConfig.label,
-        id: formConfig.textInputConfig.id,
-        placeholder: formConfig.textInputConfig.placeholder,
-      },
-      textareaConfig: {
-        label: formConfig.textareaConfig.label,
-        id: formConfig.textareaConfig.id,
-        placeholder: formConfig.textareaConfig.placeholder,
-      },
-      dateInputConfig: {
-        isActive: formConfig.dateInputConfig.isActive,
-        label: formConfig.dateInputConfig.label,
-        id: formConfig.dateInputConfig.id,
-      },
-      selectConfig: {
-        isActive: formConfig.selectConfig.isActive,
-        label: formConfig.selectConfig.label,
-        id: formConfig.selectConfig.id,
-      },
-    },
+    formConfig,
     onSubmit: (data) => {
       if (initialData) {
         onEdit(data);

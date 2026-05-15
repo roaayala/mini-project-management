@@ -2,6 +2,7 @@ import WorkspaceController from "./WorkspaceController.js";
 
 import createMainLayout from "../components/MainLayout.js";
 import showDialog from "../components/dialog-form/Dialog.js";
+import { id } from "date-fns/locale";
 
 export default class AppController {
   constructor(root) {
@@ -74,7 +75,38 @@ export default class AppController {
             dateInputConfig: { isActive: false },
             selectConfig: { isActive: false },
           },
-          onEdit: (data) => this.actions.handleEditWorkspace(data),
+          onEdit: (data) => this.actions.handleEditWorkspace(wsId, data),
+        });
+      },
+
+      showAddProjectDialog: () => {
+        showDialog({
+          initialData: null,
+          dialogConfig: { title: "Add Project Details" },
+          formConfig: {
+            id: "addProject",
+            textInputConfig: {
+              label: "Project Name",
+              id: "projectName",
+              placeholder: "Enter project name!",
+            },
+            textareaConfig: {
+              label: "Project Description",
+              id: "projectDescription",
+              placeholder: "Enter project description!",
+            },
+            dateInputConfig: {
+              isActive: true,
+              label: "Project Deadline",
+              id: "projectDeadline",
+            },
+            selectConfig: {
+              isActive: true,
+              label: "Project Priority",
+              id: "projectPriority",
+            },
+          },
+          onAdd: (data) => this.actions.handleAddProject(data),
         });
       },
 
@@ -103,8 +135,8 @@ export default class AppController {
 
         this.render();
       },
-      handleEditWorkspace: (editedWs) => {
-        this.workspaceController.editWorkspace(this.activeWorkspace, editedWs);
+      handleEditWorkspace: (id, editedWs) => {
+        this.workspaceController.editWorkspace(id, editedWs);
         this.models.workspaces = this.workspaceController.workspaces;
 
         this.render();

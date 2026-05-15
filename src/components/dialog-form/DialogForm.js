@@ -5,7 +5,7 @@ import createTextInput from "../commons/TextInput.js";
 import createTextarea from "../commons/Textarea.js";
 
 export default function createDialogForm({
-  initialData,
+  initialData = null,
   formConfig = {
     id: "",
     textInputConfig: {

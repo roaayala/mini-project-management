@@ -28,10 +28,8 @@ export default function createWorkspacePage({
   workspacePage.appendChild(workspaceContent);
 
   const workspaceActions = createPageActions({
+    actions,
     buttonConfig: { text: "Add Project" },
-    dialogConfig: { title: "Project" },
-    formConfig: { id: "form", elementPlaceholder: "Project" },
-    onAdd: actions.handleAddProject,
   });
   workspacePage.appendChild(workspaceActions);
 

@@ -7,4 +7,10 @@ export default class Project {
     this.priority = priority;
     this.tasks = [];
   }
+
+  addProject() {}
+
+  removeProject() {}
+
+  editProject() {}
 }

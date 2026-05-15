@@ -1,5 +1,4 @@
 import createButton from "../commons/Button.js";
-
 import createDialogForm from "./DialogForm.js";
 
 export default function showDialog({

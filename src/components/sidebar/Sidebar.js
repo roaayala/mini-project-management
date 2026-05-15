@@ -19,7 +19,7 @@ export default function createSidebar({
   sidebar.appendChild(sidebarNav);
 
   // actions
-  const sidebarAction = createSidebarAction({});
+  const sidebarAction = createSidebarAction({ actions });
   sidebar.appendChild(sidebarAction);
 
   return sidebar;

@@ -1,6 +1,7 @@
 import WorkspaceController from "./WorkspaceController.js";
 
 import createMainLayout from "../components/MainLayout.js";
+import showDialog from "../components/dialog-form/Dialog.js";
 
 export default class AppController {
   constructor(root) {
@@ -25,6 +26,31 @@ export default class AppController {
         this.activeTodo = null;
 
         this.render();
+      },
+
+      // DIALOG
+      showAddWorkspaceDialog: () => {
+        showDialog({
+          dialogConfig: { title: "Add Workspace Details" },
+          formConfig: {
+            id: "add-workspace",
+            textInputConfig: {
+              label: "Workspace Name",
+              id: "workspaceName",
+              placeholder: "Enter workspace name!",
+            },
+            textareaConfig: {
+              label: "Workspace Description",
+              id: "workspaceDescription",
+              placeholder: "Enter workspace description!",
+            },
+            dateInputConfig: {
+              isActive: false,
+            },
+            selectConfig: { isActive: false },
+          },
+          onAdd: (data) => this.actions.handleAddWorkspace(data),
+        });
       },
 
       // WORKSPACE HANDLER

@@ -1,16 +1,19 @@
 import WorkspaceController from "./WorkspaceController.js";
-
 import createMainLayout from "../components/MainLayout.js";
 import showDialog from "../components/dialog-form/Dialog.js";
-import { id } from "date-fns/locale";
+import ProjectController from "./ProjectController.js";
 
 export default class AppController {
   constructor(root) {
     this.root = root;
-    this.models = { workspaces: [] };
+    this.models = {
+      workspaces: [],
+      projects: [],
+    };
 
     // CONTROLLERS
     this.workspaceController = new WorkspaceController(this.models.workspaces);
+    this.projectController = new ProjectController(this.models.projects);
 
     // ACTIVE STATE
     this.activeWorkspace = null;
@@ -144,6 +147,16 @@ export default class AppController {
 
       handleAddProject: (data) => {
         console.log(data);
+        const newProject = this.projectController.addProject(
+          this.activeWorkspace,
+          data.name,
+          data.description,
+          data.DueDate,
+          data.priority,
+        );
+
+        this.models.projects = this.projectController.projects;
+        console.log(this.models);
       },
     };
 
@@ -154,7 +167,7 @@ export default class AppController {
     this.root.innerHTML = "";
 
     const mainLayout = createMainLayout(
-      this.models.workspaces,
+      this.models,
       this.actions,
       this.activeWorkspace,
     );

@@ -5,6 +5,7 @@ import createPageActions from "./PageActions";
 
 export default function createWorkspacePage({
   workspace,
+  projects,
   actions,
   activeWorkspace,
 }) {
@@ -21,7 +22,7 @@ export default function createWorkspacePage({
   workspacePage.appendChild(workspaceHeader);
 
   const workspaceContent = createPageContent({
-    projects: workspace.projects,
+    projects,
     actions,
     emptyMessageText: "Project is empty!",
   });

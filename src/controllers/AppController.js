@@ -9,6 +9,8 @@ export default class AppController {
     this.models = {
       workspaces: [],
       projects: [],
+      tasks: [],
+      todos: [],
     };
 
     // CONTROLLERS

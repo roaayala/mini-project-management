@@ -1,6 +1,6 @@
 import createEmptyMessage from "../commons/EmptyMessage";
+import createButton from "../commons/Button";
 import createPageHeader from "./PageHeader";
-import createPageContent from "./PageContent";
 import createPageActions from "./PageActions";
 
 export default function createWorkspacePage({ workspace, projects, actions }) {
@@ -13,16 +13,53 @@ export default function createWorkspacePage({ workspace, projects, actions }) {
     return workspacePage;
   }
 
+  // HEADER
   const workspaceHeader = createPageHeader({ workspace });
   workspacePage.appendChild(workspaceHeader);
 
-  const workspaceContent = createPageContent({
-    items: projects,
-    actions,
-    emptyMessageText: "Project is empty!",
+  // CONTENT
+  const workspaceContent = document.createElement("main");
+  workspaceContent.className = "page-content";
+
+  if (projects.length === 0) {
+    const emptyMessage = createEmptyMessage("No project being added!");
+    workspaceContent.appendChild(emptyMessage);
+  }
+
+  projects.forEach((project) => {
+    const projectItem = document.createElement("div");
+    projectItem.className = "page-content__item";
+
+    const projectItemTitle = document.createElement("h3");
+    projectItemTitle.className = "page-content__item-title";
+    projectItemTitle.textContent = project.name;
+    projectItem.appendChild(projectItemTitle);
+
+    const projectItemActions = document.createElement("div");
+    projectItemActions.className = "page-content__item-actions";
+    // edit button
+    const editButton = createButton({
+      text: "Edit",
+      initialData: project,
+      callback: () => {
+        actions.showEditProjectDialog(project.id);
+      },
+    });
+    projectItemActions.appendChild(editButton);
+    // delete button
+    const deleteButton = createButton({
+      text: "Delete",
+      callback: () => {
+        actions.handleRemoveProject(project.id);
+      },
+    });
+    projectItem.appendChild(projectItemActions);
+
+    workspaceContent.appendChild(projectItem);
   });
   workspacePage.appendChild(workspaceContent);
 
+  // ACTIONS
   const workspaceActions = createPageActions({
     actions,
     buttonConfig: { text: "Add Project" },

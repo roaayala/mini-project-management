@@ -116,6 +116,38 @@ export default class AppController {
           onAdd: (data) => this.actions.handleAddProject(data),
         });
       },
+      showEditProjectDialog: (pId) => {
+        showDialog({
+          initialData: this.models.projects.find(
+            (project) => project.id === pId,
+          ),
+          dialogConfig: { title: "Edit Project Details" },
+          formConfig: {
+            id: "editProject",
+            textInputConfig: {
+              label: "Project Name",
+              id: "projectName",
+              placeholder: "Enter project name!",
+            },
+            textareaConfig: {
+              label: "Project Description",
+              id: "projectDescription",
+              placeholder: "Enter project description!",
+            },
+            dateInputConfig: {
+              isActive: true,
+              label: "Project Deadline",
+              id: "projectDeadline",
+            },
+            selectConfig: {
+              isActive: true,
+              label: "Project Priority",
+              id: "projectPriority",
+            },
+          },
+          onEdit: (data) => this.actions.handleEditProject(pId, data),
+        });
+      },
 
       // WORKSPACE HANDLER
       handleAddWorkspace: (data) => {
@@ -167,6 +199,12 @@ export default class AppController {
           data.priority,
         );
 
+        this.models.projects = this.projectController.projects;
+
+        this.render();
+      },
+      handleEditProject: (pId, data) => {
+        this.projectController.editProject(pId, data);
         this.models.projects = this.projectController.projects;
 
         this.render();

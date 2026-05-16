@@ -25,5 +25,15 @@ export default class ProjectController {
     this.projects = this.projects.filter((project) => project.wsId !== id);
   }
 
-  editProject() {}
+  editProject(pId, data) {
+    this.projects = this.projects.map((project) => {
+      if (project.id === pId) {
+        return {
+          ...project,
+          ...data,
+        };
+      }
+      return project;
+    });
+  }
 }

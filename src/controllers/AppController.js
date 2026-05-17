@@ -98,7 +98,7 @@ export default class AppController {
           onEdit: (data) => this.actions.handleEditProject(pId, data),
         });
       },
-      showAddTaskDialog: () => {
+      showAddTaskDialog: (pId) => {
         showDialog({
           initialData: null,
           dialogConfig: { title: "Add Taks Details" },
@@ -125,7 +125,7 @@ export default class AppController {
               id: "taskPriority",
             },
           },
-          onAdd: (data) => this.actions.handleAddTask(data),
+          onAdd: (data) => this.actions.handleAddTask(pId, data),
         });
       },
       showEditTaskDialog: () => {},
@@ -163,8 +163,19 @@ export default class AppController {
         this.models.projects = this.projectController.projects;
         this.render();
       },
-      handleAddTask: (data) => {
-        console.log(data);
+      handleAddTask: (pId, data) => {
+        this.taskController.addTask(
+          pId,
+          data.name,
+          data.description,
+          data.deadline,
+          data.priority,
+        );
+
+        this.models.tasks = this.taskController.tasks;
+        console.log(this.models.tasks);
+
+        this.render();
       },
       handleRemoveTask: () => {},
       handleEditTask: () => {},

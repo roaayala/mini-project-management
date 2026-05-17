@@ -19,9 +19,11 @@ export default function createProjectPage({ project, tasks, actions }) {
   projectPage.appendChild(pageHeader);
 
   // CONTENT
+  const projectTasks = tasks.filter((task) => task.pId === project.id);
   const pageContent = document.createElement("main");
   pageContent.className = "page-content";
-  tasks.forEach((task) => {
+
+  projectTasks.forEach((task) => {
     // item container
     const item = document.createElement("div");
     item.className = "page-content__item";
@@ -56,19 +58,21 @@ export default function createProjectPage({ project, tasks, actions }) {
 
     item.appendChild(actionsContainer);
 
-    content.appendChild(item);
+    pageContent.appendChild(item);
   });
 
+  projectPage.appendChild(pageContent);
+
   // ACTION
-  const PageAction = createPageAction({
+  const pageAction = createPageAction({
     buttonConfig: {
       text: "New Task",
       callback: () => {
-        actions.showAddTaskDialog();
+        actions.showAddTaskDialog(project.id);
       },
     },
   });
-  projectPage.appendChild(PageAction);
+  projectPage.appendChild(pageAction);
 
   return projectPage;
 }

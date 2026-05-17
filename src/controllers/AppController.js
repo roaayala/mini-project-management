@@ -37,10 +37,12 @@ export default class AppController {
 
         this.render();
       },
+
       // GET ACTIVE STATE
       getActiveProject: () => this.activeProject,
       getActiveTask: () => this.activeTask,
       getActiveTodo: () => this.activeTodo,
+
       // DIALOG
       showAddProjectDialog: () => {
         showDialog({
@@ -97,7 +99,7 @@ export default class AppController {
         });
       },
 
-      // WORKSPACE HANDLER
+      // PROJECT HANDLER
       handleAddProject: (data) => {
         const newProject = this.projectController.addProject(
           data.name,
@@ -106,7 +108,6 @@ export default class AppController {
 
         this.models.projects = this.projectController.projects;
         this.actions.setActiveProject(newProject.id);
-        console.log(newProject);
 
         this.render();
       },
@@ -127,7 +128,6 @@ export default class AppController {
       handleEditProject: (pId, data) => {
         this.projectController.editProject(pId, data);
         this.models.projects = this.projectController.projects;
-
         this.render();
       },
     };

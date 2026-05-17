@@ -11,8 +11,8 @@ export default class ProjectController {
     const newProject = new Project({
       id: generateId("project"),
       createdAt: todayDateString(),
-      name,
-      description,
+      name: name.trim(),
+      description: description.trim(),
     });
 
     this.projects = [...this.projects, newProject];
@@ -27,10 +27,10 @@ export default class ProjectController {
   editProject(pId, data) {
     this.projects = this.projects.map((project) => {
       if (project.id === pId) {
-        return {
+        return new Project({
           ...project,
           ...data,
-        };
+        });
       }
       return project;
     });

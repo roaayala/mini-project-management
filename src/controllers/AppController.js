@@ -119,7 +119,7 @@ export default class AppController {
 
         this.models.projects = this.projectController.projects;
 
-        if (this.actions.getActiveProject === pId) {
+        if (this.actions.getActiveProject() === pId) {
           this.actions.resetAllActive();
         }
 

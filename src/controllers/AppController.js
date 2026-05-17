@@ -13,23 +13,31 @@ export default class AppController {
       todos: [],
     };
 
-    // CONTROLLERS
-
-    this.projectController = new ProjectController(this.models.projects);
-    this.taskController = new TaskController(this.models.tasks);
-    this.todoContoller = new TodoContoller(this.models.tasks);
-
     // ACTIVE STATE
-
     this.activeProject = null;
     this.activeTask = null;
     this.activeTodo = null;
 
+    // CONTROLLERS
+    this.projectController = new ProjectController(this.models.projects);
+    this.taskController = new TaskController(this.models.tasks);
+    this.todoContoller = new TodoContoller(this.models.todos);
+
     this.actions = {
       // SET ACTIVE STATE
+      resetAllActive: () => {
+        this.activeProject = null;
+        this.activeTask = null;
+        this.activeTodo = null;
+      },
+      setActiveProject: (pId) => {
+        this.activeProject = pId;
+        this.activeTask = null;
+        this.activeTodo = null;
 
+        this.render();
+      },
       // GET ACTIVE STATE
-
       getActiveProject: () => this.activeProject,
       getActiveTask: () => this.activeTask,
       getActiveTodo: () => this.activeTodo,
@@ -99,15 +107,15 @@ export default class AppController {
 
       // WORKSPACE HANDLER
       handleAddProject: (data) => {
-        this.projectController.addProject(
-          this.activeWorkspace,
+        const newProject = this.projectController.addProject(
           data.name,
           data.description,
-          data.DueDate,
+          data.dueDate,
           data.priority,
         );
 
         this.models.projects = this.projectController.projects;
+        this.actions.setActiveProject(newProject.id);
 
         this.render();
       },
@@ -116,7 +124,13 @@ export default class AppController {
         // remove all task
         // remove project
         this.projectController.removeProject(pId);
+
         this.models.projects = this.projectController.projects;
+
+        if (this.actions.getActiveProject === pId) {
+          this.actions.resetAllActive();
+        }
+
         this.render();
       },
       handleEditProject: (pId, data) => {

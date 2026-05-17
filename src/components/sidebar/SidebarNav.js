@@ -1,48 +1,45 @@
 import createButton from "../commons/Button.js";
 import createEmptyMessage from "../commons/EmptyMessage.js";
 
-export default function createSidebarNav({ actions, workspaces }) {
+export default function createSidebarNav({ projects, actions }) {
   const sidebarNav = document.createElement("nav");
   sidebarNav.className = "sidebar__nav";
 
-  if (workspaces.length === 0) {
-    const emptyMessage = createEmptyMessage("Workspaces is empty!");
+  if (projects.length === 0) {
+    const emptyMessage = createEmptyMessage("Project is empty!");
     sidebarNav.appendChild(emptyMessage);
     return sidebarNav;
   }
 
-  workspaces.forEach((workspace) => {
+  projects.forEach((project) => {
     const navItem = document.createElement("div");
-    navItem.className =
-      actions.getActiveWorkspace() === workspace.id
-        ? "sidebar__nav-item sidebar__nav-item--active"
-        : "sidebar__nav-item";
-    navItem.id = workspace.id;
+    navItem.className = "sidebar__nav-item";
+    navItem.id = project.id;
 
     const navItemTitle = document.createElement("span");
     navItemTitle.className = "sidebar__nav-item-title";
-    navItemTitle.textContent = workspace.name;
+    navItemTitle.textContent = project.name;
     navItem.appendChild(navItemTitle);
 
     navItemTitle.addEventListener("click", () => {
-      actions.setActiveWorkspace(workspace.id);
+      actions.setActiveProject(project.id);
     });
 
-    if (actions.getActiveWorkspace() === workspace.id) {
+    if (actions.getActiveProject() === project.id) {
       const navItemActions = document.createElement("div");
       navItemActions.className = "sidebar__nav-item-actions";
 
       const editButton = createButton({
         text: "Edit",
-        initialData: workspace,
+        initialData: project,
         callback: () => {
-          actions.showEditWorkspaceDialog(workspace.id);
+          actions.showEditProjectDialog(project.id);
         },
       });
       const deleteButton = createButton({
         text: "Delete",
         callback: () => {
-          actions.handleRemoveWorkspace(workspace.id);
+          actions.handleRemoveProject(project.id);
         },
       });
 

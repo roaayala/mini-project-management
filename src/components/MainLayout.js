@@ -5,7 +5,7 @@ export default function createMainLayout(models, actions) {
   container.className = "container";
 
   const sidebar = createSidebar({
-    workspaces: models.workspaces,
+    projects: models.projects,
     actions,
   });
   container.appendChild(sidebar);

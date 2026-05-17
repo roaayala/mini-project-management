@@ -6,10 +6,9 @@ export default class ProjectController {
     this.projects = projects;
   }
 
-  addProject(wsId, name, description, dueDate, priority) {
+  addProject(name, description, dueDate, priority) {
     const newProject = new Project(
       generateId("project"),
-      wsId,
       name,
       description,
       dueDate,
@@ -19,10 +18,6 @@ export default class ProjectController {
     this.projects = [...this.projects, newProject];
 
     return newProject;
-  }
-
-  removeProjectsByParentId(id) {
-    this.projects = this.projects.filter((project) => project.wsId !== id);
   }
 
   removeProject(pId) {

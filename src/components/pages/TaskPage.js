@@ -20,7 +20,23 @@ export default function createTaskPage({ task, todos, actions }) {
     const emptyTodos = createEmptyMessage("No todo being added!");
     pageContent.appendChild(emptyTodos);
   } else {
-    console.log(taskTodos);
+    todos.forEach((todo) => {
+      // item container
+      const item = document.createElement("div");
+      item.className = "page-content__item";
+
+      // item title
+      const title = document.createElement("h3");
+      title.className = "page-content__item-title";
+      title.textContent = todo.name;
+      item.appendChild(title);
+
+      title.addEventListener("click", () => {
+        console.log(todo);
+      });
+
+      pageContent.append(item);
+    });
   }
 
   taskPage.appendChild(pageContent);
@@ -28,9 +44,9 @@ export default function createTaskPage({ task, todos, actions }) {
   // ACTION
   const pageAction = createPageAction({
     buttonConfig: {
-      text: "New Task",
+      text: "New Todo",
       callback: () => {
-        console.log(task.id);
+        actions.showAddTodoDialog(task.id);
       },
     },
   });

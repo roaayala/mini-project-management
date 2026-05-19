@@ -1,6 +1,6 @@
 import createSidebar from "./sidebar/Sidebar.js";
 import createProjectPage from "./pages/ProjectPage.js";
-import createTaskPage from "./pages/TaksPage.js";
+import createTaskPage from "./pages/TaskPage.js";
 
 export default function createMainLayout(models, actions) {
   const container = document.createElement("div");

@@ -8,7 +8,6 @@ export default class TodoContoller {
   }
 
   addTodo() {}
-  removeTodosByParentId(tsId) {}
   removeTodo(toId) {}
   editTodo(toId) {}
 }

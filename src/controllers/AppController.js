@@ -271,9 +271,11 @@ export default class AppController {
       },
       handleRemoveTask: (tsId) => {
         // remove all todo
+        this.todoContoller.removeTodosByTaskId(tsId);
+        this.models.todos = this.todoContoller.todos;
+
         // remove task
         this.taskController.removeTask(tsId);
-
         this.models.tasks = this.taskController.tasks;
 
         if (this.actions.getActiveTask() === tsId) {

@@ -28,6 +28,10 @@ export default class TodoContoller {
     this.todos = this.todos.filter((todo) => todo.id !== tdId);
   }
 
+  removeTodosByTaskId(tsId) {
+    this.todos = this.todos.filter((todo) => todo.tsId !== tsId);
+  }
+
   editTodo(tdId, data) {
     this.todos = this.todos.map((todo) => {
       if (todo.id === tdId) {

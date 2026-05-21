@@ -1,32 +1,33 @@
 export default function createSelect({ label, id, value = "" }) {
-	const priorities = ["low", "medium", "high"];
+  const priorities = ["Low", "Medium", "High"];
 
-	const formGroup = document.createElement("div");
-	formGroup.className = "form-group__select";
+  const formGroup = document.createElement("div");
+  formGroup.className = "form-group__select";
 
-	const textInputLabel = document.createElement("label");
-	textInputLabel.textContent = label;
-	textInputLabel.setAttribute("for", id);
-	textInputLabel.className = "label";
+  const textInputLabel = document.createElement("label");
+  textInputLabel.textContent = label;
+  textInputLabel.setAttribute("for", id);
+  textInputLabel.className = "label";
 
-	const select = document.createElement("select");
-	select.id = id;
-	select.setAttribute("name", id);
+  const select = document.createElement("select");
+  select.id = id;
+  select.className = "select";
+  select.setAttribute("name", id);
 
-	priorities.forEach((priority) => {
-		const option = document.createElement("option");
-		option.value = priority;
-		option.textContent = priority;
+  priorities.forEach((priority) => {
+    const option = document.createElement("option");
+    option.value = priority;
+    option.textContent = priority;
 
-		if (priority === value) {
-			option.selected = true;
-		}
+    if (priority === value) {
+      option.selected = true;
+    }
 
-		select.appendChild(option);
-	});
+    select.appendChild(option);
+  });
 
-	formGroup.appendChild(textInputLabel);
-	formGroup.appendChild(select);
+  formGroup.appendChild(textInputLabel);
+  formGroup.appendChild(select);
 
-	return formGroup;
+  return formGroup;
 }

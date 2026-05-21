@@ -5,9 +5,9 @@ export default function createSidebarAction({ actions }) {
   sidebarAction.className = "sidebar__action";
 
   const addButton = createButton({
-    text: "New Workspace",
+    text: "New Project",
     callback: () => {
-      actions.showAddWorkspaceDialog();
+      actions.showAddProjectDialog();
     },
   });
   sidebarAction.appendChild(addButton);

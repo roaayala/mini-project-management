@@ -3,16 +3,9 @@ import createButton from "../commons/Button";
 import createPageHeader from "./PageHeader";
 import createPageAction from "./PageAction";
 
-export default function createProjectPage({ project, tasks, actions }) {
-  const projectPage = document.createElement("main");
-  projectPage.className = "page-wrapper";
-
-  // if no project active
-  if (!actions.getActiveProject()) {
-    const emptyMessage = createEmptyMessage("No project being active!");
-    projectPage.appendChild(emptyMessage);
-    return projectPage;
-  }
+export default function createTaskPage({ task, todos, actions }) {
+  const taskPage = document.createElement("main");
+  taskPage.className = "page-wrapper";
 
   // HEADER
   const pageHeader = createPageHeader({
@@ -20,76 +13,85 @@ export default function createProjectPage({ project, tasks, actions }) {
       title: true,
       description: true,
       createdAt: true,
-      deadline: false,
-      priority: false,
+      deadline: true,
+      priority: true,
     },
-    item: project,
+    item: task,
   });
-  projectPage.appendChild(pageHeader);
+  taskPage.appendChild(pageHeader);
 
   // CONTENT
-  const projectTasks = tasks.filter((task) => task.pId === project.id);
+  const taskTodos = todos.filter((todo) => todo.tsId === task.id);
   const pageContent = document.createElement("main");
   pageContent.className = "page-content";
 
-  if (projectTasks.length === 0) {
-    const emptyTasks = createEmptyMessage("No task being added!");
-    pageContent.appendChild(emptyTasks);
+  if (taskTodos.length === 0) {
+    const emptyTodos = createEmptyMessage("No todo being added!");
+    pageContent.appendChild(emptyTodos);
   } else {
-    projectTasks.forEach((task) => {
+    todos.forEach((todo) => {
       // item container
       const item = document.createElement("div");
       item.className = "page-content__item";
 
+      // checkbox
+      const checkbox = document.createElement("input");
+      checkbox.className = "page-content__item-checkbox";
+      checkbox.type = "checkbox";
+      checkbox.checked = todo.isDone ? true : false;
+      item.appendChild(checkbox);
+
+      checkbox.addEventListener("click", () => {
+        actions.handleToggleTodo(todo.id);
+      });
+
       // item title
       const title = document.createElement("h3");
       title.className = "page-content__item-title";
-      title.textContent = task.name;
+      title.textContent = todo.name;
+      if (todo.isDone) title.style.textDecoration = "line-through";
       item.appendChild(title);
 
       title.addEventListener("click", () => {
-        actions.setActiveTask(task.id);
+        actions.setActiveTodo(todo.id);
       });
 
-      // actions container
       const actionsContainer = document.createElement("div");
       actionsContainer.className = "page-content__item-actions";
 
-      // edit Button
       const editButton = createButton({
         text: "Edit",
         callback: () => {
-          actions.showEditTaskDialog(task.id);
+          actions.showEditTodoDialog(todo.id);
         },
       });
       actionsContainer.appendChild(editButton);
 
-      // delete button
       const deleteButton = createButton({
         text: "Delete",
         callback: () => {
-          actions.handleRemoveTask(task.id);
+          actions.handleRemoveTodo(todo.id);
         },
       });
       actionsContainer.appendChild(deleteButton);
 
       item.appendChild(actionsContainer);
-
       pageContent.appendChild(item);
     });
   }
-  projectPage.appendChild(pageContent);
+
+  taskPage.appendChild(pageContent);
 
   // ACTION
   const pageAction = createPageAction({
     buttonConfig: {
-      text: "New Task",
+      text: "New Todo",
       callback: () => {
-        actions.showAddTaskDialog(project.id);
+        actions.showAddTodoDialog(task.id);
       },
     },
   });
-  projectPage.appendChild(pageAction);
+  taskPage.appendChild(pageAction);
 
-  return projectPage;
+  return taskPage;
 }

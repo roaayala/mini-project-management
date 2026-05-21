@@ -1,30 +1,42 @@
 import createSidebar from "./sidebar/Sidebar.js";
-import createWorkspacePage from "./pages/WorkspacePage.js";
+import createProjectPage from "./pages/ProjectPage.js";
+import createTaskPage from "./pages/TaskPage.js";
+import createTodoPage from "./pages/TodoPage.js";
 
 export default function createMainLayout(models, actions) {
   const container = document.createElement("div");
   container.className = "container";
 
+  const { projects, tasks, todos } = models;
+  const { getActiveProject, getActiveTask, getActiveTodo } = actions;
+
   const sidebar = createSidebar({
-    workspaces: models.workspaces,
+    projects,
     actions,
   });
   container.appendChild(sidebar);
 
-  const workspace = models.workspaces.find(
-    (workspace) => workspace.id === actions.getActiveWorkspace(),
-  );
+  if (getActiveTodo()) {
+    const todo = todos.find((todo) => getActiveTodo() === todo.id);
 
-  const projects = models.projects.filter(
-    (project) => project.wsId === actions.getActiveWorkspace(),
-  );
+    const todoPage = createTodoPage({ todo });
 
-  const workspacePage = createWorkspacePage({
-    workspace,
-    projects,
-    actions,
-  });
-  container.appendChild(workspacePage);
+    container.appendChild(todoPage);
+  } else if (getActiveTask()) {
+    const task = tasks.find((task) => getActiveTask() === task.id);
+
+    const taskPage = createTaskPage({ task, todos, actions });
+
+    container.appendChild(taskPage);
+  } else {
+    const project = projects.find(
+      (project) => getActiveProject() === project.id,
+    );
+
+    const projectPage = createProjectPage({ project, tasks, actions });
+
+    container.appendChild(projectPage);
+  }
 
   return container;
 }

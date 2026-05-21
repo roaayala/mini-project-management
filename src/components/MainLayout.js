@@ -1,6 +1,7 @@
 import createSidebar from "./sidebar/Sidebar.js";
 import createProjectPage from "./pages/ProjectPage.js";
 import createTaskPage from "./pages/TaskPage.js";
+import createTodoPage from "./pages/TodoPage.js";
 
 export default function createMainLayout(models, actions) {
   const container = document.createElement("div");
@@ -16,7 +17,11 @@ export default function createMainLayout(models, actions) {
   container.appendChild(sidebar);
 
   if (getActiveTodo()) {
-    console.log("todo page");
+    const todo = todos.find((todo) => getActiveTodo() === todo.id);
+
+    const todoPage = createTodoPage({ todo });
+
+    container.appendChild(todoPage);
   } else if (getActiveTask()) {
     const task = tasks.find((task) => getActiveTask() === task.id);
 

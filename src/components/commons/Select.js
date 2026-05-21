@@ -11,6 +11,7 @@ export default function createSelect({ label, id, value = "" }) {
 
   const select = document.createElement("select");
   select.id = id;
+  select.className = "select";
   select.setAttribute("name", id);
 
   priorities.forEach((priority) => {

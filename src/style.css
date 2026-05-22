@@ -1,6 +1,31 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
 @import "./styles/reset.css";
 @import "./styles/variables.css";
 @import "./styles/base.css";
 @import "./styles/dialog.css";
 @import "./styles/form.css";
 @import "./styles/main-layout.css";
+
+.btn {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    border: none;
+    border-radius: 0.25rem;
+    background-color: transparent;
+    /*color: var(--primary);*/
+    padding: 0.25rem;
+    font-weight: 500;
+}
+
+.btn:hover {
+    color: var(--bg-light);
+    background-color: var(--primary);
+}
+
+.btn.btn-outline {
+}
+
+.btn.btn-primary {
+}

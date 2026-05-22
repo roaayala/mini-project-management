@@ -28,13 +28,16 @@
 }
 
 .sidebar__nav-item-title {
-    font-weight: bold;
     flex: 1;
     cursor: pointer;
+}
+
+.sidebar__nav-item-title--active {
+    font-weight: bold;
 }
 
 .sidebar__nav-item-actions {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.125rem;
 }

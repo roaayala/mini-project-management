@@ -1,7 +1,7 @@
 body {
     background-color: var(--bg-light);
     color: var(--text-muted);
-    font-family: sans-serif;
+    font-family: "Open Sans", sans-serif;
 }
 
 h1 {

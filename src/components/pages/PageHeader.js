@@ -1,3 +1,5 @@
+import { beautifyDateString } from "../../utils/date";
+
 export default function createPageHeader({
     elementConfig = {
         title: true,
@@ -23,7 +25,7 @@ export default function createPageHeader({
     if (elementConfig.createdAt) {
         const itemCreatedAt = document.createElement("p");
         itemCreatedAt.className = "page-header__meta";
-        itemCreatedAt.textContent = `Created at ${createdAt}`;
+        itemCreatedAt.textContent = `Created at ${beautifyDateString(createdAt)}`;
         pageHeader.appendChild(itemCreatedAt);
     }
 
@@ -38,7 +40,7 @@ export default function createPageHeader({
         const itemDeadline = document.createElement("p");
         itemDeadline.className = "page-header__meta page-header__deadline";
         itemDeadline.textContent = deadline
-            ? deadline
+            ? beautifyDateString(deadline)
             : "No deadline being added!";
         pageHeader.appendChild(itemDeadline);
     }
